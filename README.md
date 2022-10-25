@@ -6,7 +6,9 @@ Krzysztof Osiejewski 80258
 -React.js</br>
 -Bootstrap</br>
 ## Instalacja:
-...
+-node.js
+-php (np. wystarczy zainstalować xampp)
+-composer
 ## Kompilacja:
 npm install</br>
 npm run dev</br>
