@@ -11,6 +11,7 @@ Krzysztof Osiejewski 80258
 -composer
 ## Kompilacja:
 npm install</br>
+npm run build</br>
 npm run dev</br>
 
 
