@@ -8,9 +8,15 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+                // 'resources/js/checkBrowser.js',
             ],
             refresh: true,
         }),
         react(),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+        }
+    },
 });
