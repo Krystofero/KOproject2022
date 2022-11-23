@@ -3,7 +3,6 @@ Krzysztof Osiejewski 80258
 ## Projekt Biura Podróży
 ## Użyte technologie: 
 -Laravel</br>
--React.js</br>
 -Bootstrap</br>
 ## Instalacja:
 -node.js
