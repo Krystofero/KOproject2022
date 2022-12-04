@@ -1,6 +1,7 @@
 import _ from 'lodash';
 window._ = _;
 
+import '../sass/app.scss'
 import 'bootstrap';
 
 /**
