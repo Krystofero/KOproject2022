@@ -1,0 +1,148 @@
+body{
+    background-color:rgba(0,0,0) ;
+  }
+  .bg-dark {
+    --bs-bg-opacity: 1;
+    background-color:rgba(0,0,0,.5) !important;
+  }
+  
+  .maindiv {
+    display: block;
+        background-color: #808;
+        /* background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1087%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient1088)'%3e%3c/rect%3e%3cpath d='M1037.467760021637 526.7015771361446L1127.197563181224 545.7742355750742 1146.2702216201537 456.0444324154873 1056.5404184605668 436.97177397655764z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M874.6287903861623 29.845342241025236L1009.9396861622513 117.71726540037432 1097.8116093216004-17.593630375714696 962.5007135455114-105.46555353506378z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M398.78328804860774 500.88851375114393L507.36838118554317 506.57921734569294 404.47399164315675 392.30342061420845z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M117.24802741741667 485.9128814130054L222.14464476880738 420.3662001111611 51.701346115572406 381.01626406161466z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1343.578%2c786.397C1397.568%2c786.548%2c1445.696%2c752.444%2c1470.612%2c704.547C1493.768%2c660.034%2c1485.67%2c607.065%2c1458.963%2c564.587C1434.046%2c524.956%2c1390.363%2c504.116%2c1343.578%2c502.493C1293.329%2c500.75%2c1240.088%2c513.432%2c1213.445%2c556.071C1185.458%2c600.862%2c1191.786%2c657.857%2c1217.767%2c703.841C1244.213%2c750.648%2c1289.817%2c786.247%2c1343.578%2c786.397' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M310.60731158242174-58.648393611259365L170.7513791219745 3.6194793307049906 372.8751845243861 81.20753884918787z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M694.5212561809058 133.88951707334007L790.5676627506617 19.64715398507292 662.4948353375612-5.24768179962723z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M141.862%2c452.616C188.648%2c450.317%2c227.555%2c421.844%2c252.431%2c382.153C279.298%2c339.286%2c300.408%2c285.168%2c273.763%2c242.162C247.91%2c200.434%2c190.896%2c201.385%2c141.862%2c203.69C98.085%2c205.748%2c54.683%2c217.539%2c29.819%2c253.628C1.098%2c295.315%2c-14.117%2c349.919%2c10.72%2c394.03C35.897%2c438.744%2c90.609%2c455.135%2c141.862%2c452.616' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M731.445%2c679.23C785.471%2c680.491%2c848.978%2c681.363%2c875.956%2c634.538C902.913%2c587.749%2c872.449%2c531.877%2c842.058%2c487.242C816.267%2c449.363%2c777.271%2c422.221%2c731.445%2c422.298C685.75%2c422.375%2c646.32%2c449.263%2c621.477%2c487.615C593.825%2c530.303%2c572.844%2c583.942%2c598.161%2c628.056C623.55%2c672.295%2c680.452%2c678.04%2c731.445%2c679.23' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M937.966%2c262.123C965.551%2c261.212%2c992.201%2c250.946%2c1007.146%2c227.742C1023.441%2c202.442%2c1028.844%2c170.078%2c1014.174%2c143.802C999.187%2c116.957%2c968.697%2c102.89%2c937.966%2c103.826C908.798%2c104.715%2c884.458%2c123.216%2c869.398%2c148.212C853.753%2c174.18%2c844.752%2c206.617%2c860.387%2c232.591C875.682%2c258%2c908.325%2c263.102%2c937.966%2c262.123' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1458.88202365188 298.08685600257775L1358.0402142438693 276.6522677222273 1336.6056259635188 377.4940771302381 1437.4474353715295 398.92866541058856z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M290.595%2c340.763C309.82%2c339.663%2c327.73%2c329.957%2c336.764%2c312.952C345.303%2c296.878%2c341.757%2c277.769%2c332.33%2c262.2C323.28%2c247.253%2c308.041%2c237.672%2c290.595%2c236.703C271.132%2c235.622%2c251.006%2c240.998%2c239.98%2c257.073C227.45%2c275.34%2c222.807%2c299.859%2c234.271%2c318.814C245.447%2c337.293%2c269.034%2c341.996%2c290.595%2c340.763' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M600.1228313168571 379.0758926569537L525.3722636111914 332.3665538598602 478.6629248140979 407.1171215655258 553.4134925197635 453.8264603626193z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M248.97312450812382 500.34121192255895L181.26559302311864 485.9495318309415 193.53183862819503 594.706669104258z' fill='rgba(238%2c 235%2c 239%2c 0.54)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1087'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1088'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(153%2c 0%2c 158%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e"); */
+        /* background-image:url("public/img/planebackground.svg"); */
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom center, 50%, 50%;
+    min-height: 810px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navbar-brand.logo{
+    font-size: 30px;
+    color: white;
+    font-weight: 1000;
+  }
+  .navbar-brand.logo:hover {
+    color: #c900db;
+  }
+  
+  .navbar-brand.loger:hover {
+    color: #c900db;
+  }
+  
+  .nav-link:hover{
+    color:white;
+    background-color:rgba(0,0,0,.5) !important;
+  }
+  
+  .footer-colors {
+    color: #fff;
+  }
+  
+  .footer-links {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footerPosition {
+    position: absolute;
+    bottom:0;
+    width: 100%;
+  }
+  .footerbg{
+    background: black;
+  }
+  .footer-links{
+    color: white;
+  }
+  .footer-links:hover{
+    color: #c900db;
+  }
+  
+  .media ul li .fa{
+    color: #c900db;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+  }
+  
+  #facebookIcon:hover {
+    color: #c900db;
+  }
+  
+  #instagraIcon:hover {
+    color: #c900db;
+  }
+  
+  #youtubeIcon:hover {
+    color: #c900db;
+  }
+
+  .card{
+    margin-top: 6vh;
+    margin-bottom: 10vh;
+    background-color: rgba(0,0,0,.65) !important;
+    color: white;
+    align-content: center;
+    }
+
+    #titlerow{
+      margin:10px;
+    }
+
+    #myTable thead{
+      /* font-size: 18px; */
+      color: #fff;
+      background-color: purple;
+    }
+    
+    #myTable tbody{
+      /* font-size: 15px; */
+      color: black;
+      background-color: #c94c4c;
+    }
+    
+    .paginate_button{
+      background-color:	rgba(203, 112, 255, 0.65) !important;
+      color: black;
+      border: 1px solid black;
+    }
+    #myTable_wrapper{
+      background-color:	rgba(255, 255, 255, 0.65) !important;
+      border: 1px solid black;
+    }
+    
+    #myTable_filter input{
+      background-color:	rgba(203, 112, 255, 0.65) !important;
+      border: 1px solid black;
+    }
+
+    #welcome{
+      padding: 250px 0;
+      height: 50%;
+      display: block;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #welcome h1 {
+      text-align: center;
+      color: #202020;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+    
+    #welcome h1 span {
+      display: block;
+      margin: 11px 0 17px 0;
+      font-size: 80px;
+      line-height: 80px;
+      color: #e5e5f1;
+      text-shadow: -6px 6px 15px #9d50b1;
+      letter-spacing: -4px;
+    }
+
+    #welcome h1 span:hover {
+      text-shadow: 0 10.36px 8.896px #6a6485,0 -1px 2px #fff;
+    }

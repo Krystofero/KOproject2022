@@ -18,6 +18,6 @@
             @yield('content')
         </main>
     </div>
-    @include('constant/footer')
+         @include('constant/footer')
 </body>
 </html>

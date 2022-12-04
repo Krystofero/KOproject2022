@@ -1,5 +1,5 @@
 {{-- Footer at the bottom of the site - included in files --}}
-<footer class="bd-footer py-2 mt-2 font-small bg-dark footer-colors">
+<footer class="bd-footer py-2 mt-2 font-small bg-dark footer-colors footerPosition">
 
     <div class="container-fluid text-center text-md-left">
 
@@ -12,7 +12,7 @@
                         <i class="fas fa-phone"></i>&nbsp;+48 001 321 222</i>
                     </li>
                     <li>
-                        <i class="fas fa-envelope"></i>&nbsp;guestionis@gmail.com
+                        <i class="fas fa-envelope"></i>&nbsp;smakwakacji@gmail.com
                     </li>
                     <li>
                         <i class="fas fa-solid fa-fax"></i>&nbsp;+48 854 367 298
