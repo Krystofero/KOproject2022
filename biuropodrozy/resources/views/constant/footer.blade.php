@@ -1,5 +1,5 @@
 {{-- Footer at the bottom of the site - included in files --}}
-<footer class="bd-footer py-2 mt-2 font-small bg-dark footer-colors footerPosition">
+<footer class="bd-footer py-2 mt-2 font-small bg-dark footer-colors">
 
     <div class="container-fluid text-center text-md-left">
 

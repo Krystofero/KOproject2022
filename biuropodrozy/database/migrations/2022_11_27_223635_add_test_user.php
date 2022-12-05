@@ -17,7 +17,7 @@ class AddTestUser extends Migration
     {
         DB::table('users')->insert(
             array(
-                'user_level' => 'Admin',
+                'user_level' => 'Administrator',
                 'firstname' => 'Tester',
                 'lastname' => 'Test',
                 'email' => 'tester@test.com',

@@ -4,6 +4,16 @@ window._ = _;
 import '../sass/app.scss'
 import 'bootstrap';
 
+try {
+    window.$.ajaxSetup({//konfiguracja tokenu csrf dla Ajax'a
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+    });
+    require('bootstrap');
+} catch (e) {}
+
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

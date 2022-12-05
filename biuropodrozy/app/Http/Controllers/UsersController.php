@@ -19,7 +19,7 @@ class UsersController extends Controller
     {
         return view('users.list', [
             'users' => User::all(),   #lista wszystkich użytkowników zwracana w blade    
-            'users_level_list' => array(1 => 'Admin', 2 => 'Moder', 3 => 'Client')  
+            'users_level_list' => array(1 => 'Administrator', 2 => 'Moderator', 3 => 'Klient')  
         ]);
     }
 
@@ -33,7 +33,7 @@ class UsersController extends Controller
     {
         return view('users.edit', [
             'user' => $user,
-            'users_level_list' => array(1 => 'Admin', 2 => 'Moder', 3 => 'Client')  
+            'users_level_list' => array(1 => 'Administrator', 2 => 'Moderator', 3 => 'Klient')  
         ]);
     }
 

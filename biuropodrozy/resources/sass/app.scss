@@ -47,12 +47,12 @@ body{
     font-weight: 1000;
   }
   .navbar-brand.logo:hover {
-    color: #2343e3;
+    color: #9d50b1;
     // color: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   }
   
   .navbar-brand.loger:hover {
-    color: #2343e3;
+    color: #9d50b1;
     // color: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 
   }
@@ -77,11 +77,12 @@ body{
   }
   
   .footerPosition {
-    margin-top: auto;
+    // margin-top: auto;
     // height: 50px;
     // transition-duration: 0.300s;
     // position: absolute;
-    // bottom:0;
+    bottom:0;
+    // margin-block: -5% -40%;
     // width: 100%;
   }
 //   .footerPosition:hover {
@@ -95,25 +96,25 @@ body{
     color: white;
   }
   .footer-links:hover{
-    color: #2343e3;
+    color: #de72fa;
   }
   
   .media ul li .fa{
-    color: #2343e3;
+    color: #de72fa;
     margin-top: 20px;
     transition: all 0.5s ease;
   }
   
   #facebookIcon:hover {
-    color: #2343e3;
+    color: #de72fa;
   }
   
   #instagraIcon:hover {
-    color: #2343e3;
+    color: #de72fa;
   }
   
   #youtubeIcon:hover {
-    color: #2343e3;
+    color: #de72fa;
   }
 
   .card{
@@ -146,7 +147,7 @@ body{
       border: 1px solid black;
     }
     #myTable_wrapper{
-      background-color:	rgba(255, 255, 255, 0.65) !important;
+      background-color:	rgba(255, 255, 255, 0.601) !important;
       border: 1px solid black;
     }
     

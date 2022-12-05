@@ -16,7 +16,7 @@ return new class extends Migration
         if (!Schema::hasTable('users')) {
             Schema::create('users', function (Blueprint $table) {
                 $table->id();
-                $table->enum('user_level', ['Admin','Moder','Client'])->default('Client');
+                $table->enum('user_level', ['Administrator','Moderator','Klient'])->default('Klient');
                 $table->string('firstname');        
                 $table->string('lastname');
                 $table->string('email')->unique();
