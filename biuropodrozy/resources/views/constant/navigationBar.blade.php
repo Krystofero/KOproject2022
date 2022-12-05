@@ -1,5 +1,5 @@
 {{-- Navigation Bar on the up site - included in files --}}
-<nav class="navbar navbar-expand-md navbar-dark sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
     <div class="container">
         <!-- Logo -->
         {{-- <img src="{{URL::asset('/image/Logo.png')}}" width="45" height="40"> --}}
@@ -12,14 +12,14 @@
            <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 @auth
-                    @can('isClient')
+                    {{-- @can('isClient')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('questionnaires.index') }}">Oferta</a>
+                            <a class="nav-link" href="{{ route('offerts.index') }}">Oferta</a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     @can('isModer')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('questionnairesModerator.index') }}">Zarządzaj ankietami</a>
+                            <a class="nav-link" href="{{ route('offertsModerator.index') }}">Zarządzaj ofertami</a>
                         </li>
                     @endcan
                     @can('isAdmin')
@@ -33,9 +33,6 @@
                                 </a> --}}
                                 <a class="dropdown-item nav-link navbar-collapse" href="{{ route('users.index') }}">Zarządzaj użytkownikami</a>
                             </div>
-                            {{-- <div class="dropdown-menu bg-dark">
-                                <a class="dropdown-item nav-link navbar-collapse" href="{{ route('users.index') }}">Zarządzaj użytkownikami</a>
-                            </div> --}}
                         </li>
                     @endcan
                 @endauth

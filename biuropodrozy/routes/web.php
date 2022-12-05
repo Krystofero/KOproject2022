@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModeratorOffertController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +33,21 @@ Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych 
 
     });
 
-    // Route::middleware(['can:isModer'])->group(function() { #grupa Moderator
-    // });
+    Route::middleware(['can:isModer'])->group(function() { #grupa Moderator
+        Route::get('/offertsModerator/create', [ModeratorOffertController::class, 'create']);
+        Route::get('/offertsModerator/{offert}', [ModeratorOffertController::class, 'show']);
+        Route::get('/offertsModerator/stats/{offert}', [ModeratorOffertController::class, 'stats']);
+        Route::delete('/offertsModerator/{offert}', [ModeratorOffertController::class, 'destroy']);
 
+
+        Route::resource('offertsModerator', ModeratorOffertController::class)->only([ //oferty tworzone przez moderatora
+            'index', 'store', 'edit', 'create', 'update', 'show', 'destroy'
+        ]); 
+
+    });
+
+
+    
     // Route::middleware(['can:isClient'])->group(function() { #grupa Student
     // });
   
