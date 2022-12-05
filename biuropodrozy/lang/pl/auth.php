@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'failed' => 'Te dane uwierzytelniające nie są zgodne z naszymi danymi.',
+    'failed'   => 'Błędny login lub hasło.',
     'password' => 'Podane hasło jest nieprawidłowe.',
-    'throttle' => 'Za dużo prób logowania. Spróbuj ponownie za :seconds sekund',
+    'throttle' => 'Za dużo nieudanych prób logowania. Proszę spróbować za :seconds sekund.',
 
 ];

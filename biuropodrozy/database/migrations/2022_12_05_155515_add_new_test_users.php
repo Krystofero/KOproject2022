@@ -53,7 +53,7 @@ class AddNewTestUsers extends Migration
                 'user_level' => 'Moderator',
                 'firstname' => 'Gienek',
                 'lastname' => 'Pompka',
-                'email' => 'pompka@wp.pl ',
+                'email' => 'pompka@wp.pl',
                 'tel' => '186733467',
                 'password' => Hash::make('pompka12345'),
                 'remember_token' => 'pompka123'
