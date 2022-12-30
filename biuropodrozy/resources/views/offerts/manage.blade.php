@@ -62,7 +62,7 @@
         <div class="form-group row mt-2 mb-2 text-center">
             <div class="col-md-3">
                 <a href="{{ route('offertsModerator.create') }}">
-                    <button class="border border-secondary btn btn-primary" style="color: white;"><i class="far fa-edit"></i>Utwórz nową ofertę</button>
+                    <button class="border border-secondary btn btn-primary2" style="color: white;"><i class="far fa-edit"></i>Utwórz nową ofertę</button>
                 </a>
             </div>
         </div>

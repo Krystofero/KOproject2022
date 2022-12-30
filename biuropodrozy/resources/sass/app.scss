@@ -185,3 +185,19 @@ body{
       text-shadow: 0 10.36px 8.896px #6a6485,0 -1px 2px #fff;
     }
     
+    .btn-primary2{
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #9d50b1;
+      --bs-btn-border-color: #8a469b;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #8a469b;
+      --bs-btn-hover-border-color: #723a80;
+      --bs-btn-focus-shadow-rgb: 49, 132, 253;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #9d50b1;
+      --bs-btn-active-border-color: #9d50b1;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: #8a469b;
+      --bs-btn-disabled-border-color: #723a80;
+    }  
