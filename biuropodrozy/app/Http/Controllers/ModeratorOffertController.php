@@ -71,7 +71,7 @@ class ModeratorOffertController extends Controller
             'startdate' => 'required|date|before_or_equal:enddate',
             'enddate' => 'required|date|after_or_equal:startdate',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' //zdjęcie główne
         ]);
 
         $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
@@ -141,8 +141,11 @@ class ModeratorOffertController extends Controller
     public function edit(int $id)
     { 
         $offert = DB::table('offerts')->get()->where('id', $id)->first(); //znajduje pierwszy element w tabeli o podanym id   
+        $images = DB::table('images')->get()->where('offert_id', $id);
+        // dd($images->isEmpty());
         return view('offerts.edit', [
-                'offert' => $offert
+                'offert' => $offert,
+                'images' => $images
         ]);
     }
 

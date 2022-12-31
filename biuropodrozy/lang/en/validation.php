@@ -23,7 +23,7 @@ return [
     'alpha_num' => ' :attribute musi zawierać tylko litery i cyfry.',
     'array' => ' :attribute musi być tablicą.',
     'before' => ' :attribute musi być datą przed :date.',
-    'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
+    'before_or_equal' => ' :attribute musi być datą przed lub równą :date.',
     'between' => [
         'array' => 'The :attribute must have between :min and :max items.',
         'file' => 'The :attribute must be between :min and :max kilobytes.',
