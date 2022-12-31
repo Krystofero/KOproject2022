@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
+use App\Models\Image;
 use App\Models\Offert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,11 +69,35 @@ class ModeratorOffertController extends Controller
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
             'price' => 'required|numeric|min:3',
             'startdate' => 'required|date|before_or_equal:enddate',
-            'enddate' => 'required|date|after_or_equal:startdate'
+            'enddate' => 'required|date|after_or_equal:startdate',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
         $offert = offert::create($data);
+
+
+        // dd($request['images']);
+        // dd($request['images'][0]);
+        // dd($request);
+
+        //Dodawanie zdjęcia głównego
+        $image = new Image;
+        $path = $request->file('image')->store('/images/resource', ['disk' =>   'my_files']);
+        $image->url = $path;
+        $image->is_main = true;
+        $image->offert_id = $offert->id;
+        $image->save();
+        //Dodawanie pozostałych zdjęć
+        foreach ($request->file('images') as $imagefile) {
+            $image = new Image;
+            $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
+            $image->url = $path;
+            $image->is_main = false;
+            $image->offert_id = $offert->id;
+            $image->save();
+          }
 
         return redirect(route('offertsModerator.show', $offert->id)); //przekierowanie do dalszej edycji oferty i dodawania zdjęć
     }
@@ -173,6 +199,7 @@ class ModeratorOffertController extends Controller
      */
     public function destroy(Offert $offert)
     {   
+        // dd($offert);
         try {
             $offert->delete();
             return response()->json([

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header h3 text-center">{{ __('Tworzenie nowej oferty') }}</div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('offertsModerator.store') }}">
+                    <form method="post" action="{{ route('offertsModerator.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="title">Nazwa</label>
@@ -82,6 +82,15 @@
                             @enderror  
                         </div>
 
+                        <div class="form-group">
+                            <label for="image">Wybierz zdjęcie główne</label>
+                            <input type="file" name="image" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="images">Wybierz pozostałe zdjęcia</label>
+                            <input type="file" name="images[]" multiple>
+                        </div>
                         {{-- <div class="form-group">
                             <label for="photos">Podpięte zdjęcia</label>
                             <div class="col-md-12">

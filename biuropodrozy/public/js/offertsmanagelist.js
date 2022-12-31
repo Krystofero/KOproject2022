@@ -5,7 +5,8 @@ $(document).ready(function () {
             [0, "asc"]
         ],
         "aoColumnDefs": [
-            { "bSortable": false, "aTargets": [-1] }
+            { "bSortable": false, "aTargets": [-1] },
+            { "width": "5%", "aTargets": [2, 3, 5, 6] }
         ],
         "columns": [
             { "sType": "polish-string" },

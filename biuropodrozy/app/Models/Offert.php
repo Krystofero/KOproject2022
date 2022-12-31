@@ -32,16 +32,15 @@ class Offert extends Model
         'enddate'
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    // //Offert = collection of photos
-    // public function photos()
+    // public function user()
     // {
-    //     // return $this->hasMany(Question::class);
-    //     return $this->hasMany(Photo::class, 'offert_id');
+    //     return $this->belongsTo(User::class);
     // }
+
+    // //Offert = collection of images
+    public function images()
+    {
+        return $this->hasMany('Image::class', 'offert_id');
+    }
 
 }
