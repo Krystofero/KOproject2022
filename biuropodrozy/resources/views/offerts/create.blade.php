@@ -11,7 +11,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="title">Nazwa</label>
-                            <input name="title" id="title" class="form-control" type="text" aria-describedby="titleHelp" placeholder="Wprowadź tytuł" required autocomplete="title" autofocus>
+                            <input name="title" id="title" class="form-control" value="{{ old('title') }}" type="text" aria-describedby="titleHelp" placeholder="Wprowadź tytuł" required autocomplete="title" autofocus>
                             <small id="titleHelp" class="form-text text-muted">Podaj unikalną nazwę oferty.</small>
 
                             @error('title')
@@ -21,7 +21,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8">
                                 <label for="country">Kraj</label>
-                                <input name="country" id="title" class="form-control" type="text" aria-describedby="countryHelp" placeholder="Wprowadź kraj" required autocomplete="title" autofocus>
+                                <input name="country" id="country" class="form-control" value="{{ old('country') }}" type="text" aria-describedby="countryHelp" placeholder="Wprowadź kraj" required autocomplete="title" autofocus>
                                 <small id="countryHelp" class="form-text text-muted">Podaj kraj oferty.</small>
 
                                 @error('country')
@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="price">Cena</label>
-                                <input name="price" id="price" class="form-control" type="number" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" autofocus></input>
+                                <input name="price" id="price" class="form-control" value="{{ old('price') }}" type="number" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" autofocus></input>
                                 <small id="priceHelp" class="form-text text-muted">Wprowadź cenę oferty.</small>
 
                                 @error('price')
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Opis</label>
-                            <textarea name="description" id="description" class="form-control" type="text" aria-describedby="descriptionHelp" placeholder="Wprowadź opis" autocomplete="description" autofocus></textarea>
+                            <textarea name="description" id="description" class="form-control" type="text" aria-describedby="descriptionHelp" placeholder="Wprowadź opis" autocomplete="description" autofocus>{{ old('description') }}</textarea>
                             <small id="descriptionHelp" class="form-text text-muted">Wprowadź opis widoczny przy ofercie.</small>
 
                             @error('description')
@@ -50,7 +50,7 @@
                         <div class="form-group row mb-0 ">
                             <div class="col-md-6">
                                 <label for="startdateturnus">Data początkowa czasu trwania turnusu</label>
-                                <input name="startdateturnus" id="startdateturnus" class="form-control" type="date" aria-describedby="startdateturnusHelp" placeholder="Wprowadź datę początkową turnusu" required autocomplete="startdateturnus" autofocus>
+                                <input name="startdateturnus" id="startdateturnus" class="form-control" value="{{ old('startdateturnus') }}" type="date" aria-describedby="startdateturnusHelp" placeholder="Wprowadź datę początkową turnusu" required autocomplete="startdateturnus" autofocus>
                                 <small id="startdateturnusHelp" class="form-text text-muted">Data określająca początek turnusu.</small>
 
                                 @error('startdateturnus')
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="enddateturnus">Data końcowa czasu trwania turnusu</label>
-                                <input name="enddateturnus" id="enddateturnus" class="form-control" type="date" aria-describedby="enddateturnusHelp" placeholder="Wprowadź datę końcową turnusu" required autocomplete="enddateturnus" autofocus>
+                                <input name="enddateturnus" id="enddateturnus" class="form-control" value="{{ old('enddateturnus') }}" type="date" aria-describedby="enddateturnusHelp" placeholder="Wprowadź datę końcową turnusu" required autocomplete="enddateturnus" autofocus>
                                 <small id="enddateturnusHelp" class="form-text text-muted">Data określająca koniec turnusu.</small>
 
                                 @error('enddateturnus')
@@ -71,7 +71,7 @@
                         <div class="form-group row mb-0 ">
                             <div class="col-md-6">
                                 <label for="startdate">Data początkowa czasu trwania oferty</label>
-                                <input name="startdate" id="startdate" class="form-control" type="date" aria-describedby="startdateHelp" placeholder="Wprowadź datę początkową oferty" required autocomplete="startdate" autofocus>
+                                <input name="startdate" id="startdate" class="form-control" value="{{ old('startdate') }}" type="date" aria-describedby="startdateHelp" placeholder="Wprowadź datę początkową oferty" required autocomplete="startdate" autofocus>
                                 <small id="startdateHelp" class="form-text text-muted">Data określająca początek możliwości wyświetlania oferty.</small>
 
                                 @error('startdate')
@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="enddate">Data końcowa czasu trwania oferty</label>
-                                <input name="enddate" id="enddate" class="form-control" type="date" aria-describedby="enddateHelp" placeholder="Wprowadź datę końcową oferty" required autocomplete="enddate" autofocus>
+                                <input name="enddate" id="enddate" class="form-control" value="{{ old('enddate') }}" type="date" aria-describedby="enddateHelp" placeholder="Wprowadź datę końcową oferty" required autocomplete="enddate" autofocus>
                                 <small id="enddateHelp" class="form-text text-muted">Data określająca koniec możliwości wyświetlania oferty.</small>
 
                                 @error('enddate')
