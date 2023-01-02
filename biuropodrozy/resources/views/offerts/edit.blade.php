@@ -125,7 +125,7 @@
                                 @if($image->is_main == true)
                                     <div class="form-group mpc row">
                                             <label for="mainimage">Zdjęcie główne</label>
-                                            <img src="{{ asset($image->url) }}" class="mainimage" alt="Zdjęcie główne" title="Zdjęcie główne">
+                                            <img src="{{ asset($image->url) }}" class="mainimage" id="mainimage" alt="Zdjęcie główne" title="Zdjęcie główne">
                                         <div class="col-md-2">
                                             <label for="image">Wybierz inne zdjęcie główne</label>
                                             <input type="file" name="image" id="image">
@@ -198,6 +198,24 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+      
+    $(document).ready(function (e) {
+     
+       $('#image').change(function(){      
+        let reader = new FileReader();
+     
+        reader.onload = (e) => { 
+     
+          $('#mainimage').attr('src', e.target.result); 
+        }
+        reader.readAsDataURL(this.files[0]); 
+       
+       });
+       
+    });
+     
+</script>
 {{-- <script type="text/javascript">
 
     // // initialize
