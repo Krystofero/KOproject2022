@@ -1,14 +1,24 @@
 @extends('layouts.app')
 
+{{-- @section('additives')
+    <!-- Bigger Pictures -->
+    @vite('BiggerPicture');
+@endsection --}}
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+
+            @if(session('status'))
+                <h6 class="alert alert-success">{{ session('status') }}</h6>
+            @endif
+
             <div class="card">
                 <div class="card-header h4">Edycja oferty: {{ $offert->title }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('offertsModerator.update', $offert->id) }}">
+                    <form method="POST" action="{{ route('offertsModerator.update', $offert->id) }}" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
                         @csrf
 
@@ -95,13 +105,34 @@
                         @if($images->isEmpty())
                             <div class="form-group">
                                 <p><strong>Brak zdjęć</strong></p>
+                                <div class="col-md-2">
+                                    <label for="image">Wybierz inne zdjęcie główne</label>
+                                    <input type="file" name="image" id="image">
+                                    @error('image')
+                                        <small class="form-text text-danger">{{$message}}</small>
+                                    @enderror  
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="images">Wybierz pozostałe zdjęcia</label>
+                                    <input type="file" name="images[]" multiple>
+                                    @error('images')
+                                        <small class="form-text text-danger">{{$message}}</small>
+                                    @enderror
+                                </div> 
                             </div>
                         @else
                             @foreach($images as $image)
                                 @if($image->is_main == true)
-                                    <div class="form-group mpc">
-                                        <label for="mainimage">Zdjęcie główne</label>
-                                        <img src="{{ asset($image->url) }}" class="mainimage" alt="Zdjęcie główne" title="Zdjęcie główne">
+                                    <div class="form-group mpc row">
+                                            <label for="mainimage">Zdjęcie główne</label>
+                                            <img src="{{ asset($image->url) }}" class="mainimage" alt="Zdjęcie główne" title="Zdjęcie główne">
+                                        <div class="col-md-2">
+                                            <label for="image">Wybierz inne zdjęcie główne</label>
+                                            <input type="file" name="image" id="image">
+                                            @error('image')
+                                                <small class="form-text text-danger">{{$message}}</small>
+                                            @enderror  
+                                        </div>
                                     </div>
                                 @endif
                             @endforeach
@@ -112,19 +143,37 @@
                                         @foreach($images as $image)
                                             @if($image->is_main == false)
                                                 <li class="tile">
-                                                    <img src="{{ asset($image->url) }}" class="image" alt="Pozostałe zdjęcie" title="Pozostałe zdjęcie">
+                                                    {{-- <a
+                                                        data-thumb="{{ asset($image->url) }}"
+                                                        data-alt="zdjęcie"
+                                                        data-height="2000"
+                                                        data-width="3000"
+                                                    > --}}
+                                                        <img src="{{ asset($image->url) }}" class="image" alt="zdjęcie" title="zdjęcie" loading="lazy">
+                                                    </a>
                                                 </li>
                                             @endif
                                         @endforeach
                                         <li></li>
                                     </ul>
+                                    <label for="images">Wybierz inne pozostałe zdjęcia</label>
+                                    <input type="file" name="images[]" multiple>
+                                    @error('images')
+                                        <small class="form-text text-danger">{{$message}}</small>
+                                    @enderror 
                                 </div>
                             @else
                                 @foreach($images as $image)
                                     @if($image->is_main == false)
                                         <div class="form-group">
                                             <label for="image2">Zdjęcie poboczne</label>
-                                            <img src="{{ asset($image->url) }}" class="image2" alt="Zdjęcie poboczne" title="Zdjęcie poboczne">
+                                            <img src="{{ asset($image->url) }}" class="image2" alt="Zdjęcie poboczne" title="Zdjęcie poboczne" loading="lazy">
+                                        
+                                            <label for="images">Wybierz inne pozostałe zdjęcia</label>
+                                            <input type="file" name="images[]" multiple>
+                                            @error('images')
+                                                <small class="form-text text-danger">{{$message}}</small>
+                                            @enderror 
                                         </div>
                                     @endif
                                 @endforeach
@@ -149,4 +198,30 @@
         </div>
     </div>
 </div>
+{{-- <script type="text/javascript">
+
+    // // initialize
+    let bp = BiggerPicture({
+        target: document.body,
+    })
+    // let bp = @vite('BiggerPicture');
+
+    // grab image links
+    let imageLinks = document.querySelectorAll('#photos > li > a')
+
+    // add click listener to open BiggerPicture
+    for (let link of imageLinks) {
+    link.addEventListener("click", openGallery);
+    }
+
+    // function to open BiggerPicture
+    function openGallery(e) {
+        e.preventDefault()
+        bp.open({
+            items: imageLinks,
+            el: e.currentTarget,
+        })
+    }
+
+</script> --}}
 @endsection

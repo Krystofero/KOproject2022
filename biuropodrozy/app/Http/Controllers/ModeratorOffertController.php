@@ -73,10 +73,10 @@ class ModeratorOffertController extends Controller
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' //zdjęcie główne
         ]);
+        // dd($request['image']);
 
         $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
         $offert = offert::create($data);
-
 
         // dd($request['images']);
         // dd($request['images'][0]);
@@ -166,9 +166,37 @@ class ModeratorOffertController extends Controller
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
             'price' => 'required|numeric|min:3',
             'startdate' => 'required|date|before_or_equal:enddate',
-            'enddate' => 'required|date|after_or_equal:startdate'
+            'enddate' => 'required|date|after_or_equal:startdate',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' //zdjęcie główne
         ]);
-                
+        ////Update zdjęcia głównego
+        $updatedimage = Image::where([
+            'offert_id' => $id,
+            'is_main' => true
+        ])->get();
+        // dd($updatedimage[0]);
+        $new_main_image_url = $request->file('image')->store('/images/resource', ['disk' =>   'my_files']);
+        // dd($new_main_image_url);
+        $updatedimage[0]->url = $new_main_image_url;
+        $updatedimage[0]->save();
+
+        ////Update zdjęć pobocznych
+        //usunięcie starych
+        DB::table('images')->where([
+            'offert_id' => $id,
+            'is_main' => false
+        ])->delete();
+        //dodanie nowych
+        foreach ($request->file('images') as $imagefile) {
+            $image = new Image;
+            $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
+            $image->url = $path;
+            $image->is_main = false;
+            $image->offert_id = $id;
+            $image->save();
+          }
+
         $new_title = $request->all()['title'];
         $new_country = $request->all()['country'];
         $new_description = $request->all()['description'];
@@ -191,7 +219,8 @@ class ModeratorOffertController extends Controller
 
         $updatedoffert->save();
 
-        return redirect(route('offertsModerator.index'))->with('status', __('offerts.update.success'));
+        // return redirect(route('offertsModerator.index'))->with('status', __('offerts.update.success'));
+        return redirect()->back()->with('status', ('Oferta została zaktualizwoana pomyślnie'));
     }
 
   /**
