@@ -165,15 +165,17 @@
                             @else
                                 @foreach($images as $image)
                                     @if($image->is_main == false)
-                                        <div class="form-group">
+                                        <div class="form-group row">
                                             <label for="image2">Zdjęcie poboczne</label>
                                             <img src="{{ asset($image->url) }}" class="image2" alt="Zdjęcie poboczne" title="Zdjęcie poboczne" loading="lazy">
-                                        
-                                            <label for="images">Wybierz inne pozostałe zdjęcia</label>
-                                            <input type="file" name="images[]" multiple>
-                                            @error('images')
-                                                <small class="form-text text-danger">{{$message}}</small>
-                                            @enderror 
+                                            
+                                            <div class="col-md-2">
+                                                <label for="images">Wybierz inne pozostałe zdjęcia</label>
+                                                <input type="file" name="images[]" multiple>
+                                                @error('images')
+                                                    <small class="form-text text-danger">{{$message}}</small>
+                                                @enderror 
+                                            </div>
                                         </div>
                                     @endif
                                 @endforeach

@@ -51,7 +51,7 @@
                         <a href="{{ route('offertsModerator.edit', $offert->id) }}">
                             <button class="btn btn-success btn-sm" title="Edycja oferty"><i class="far fa-edit"></i></button>
                         </a>
-                        <button class="btn btn-danger btn-sm delete" title="Usunięcie oferty" data-id="{{ $offert->id }}">
+                        <button class="btn btn-danger btn-sm delete" title="Usunięcie oferty" onclick="usunOferte({{ $offert->id }})" data-id="{{ $offert->id }}">
                             <i class="far fa-trash-alt"></i>
                         </button>
                     </td>
@@ -68,7 +68,31 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" > const deleteUrl = "{{ url('offertsModerator') }}/"; </script>
+<script type="text/javascript" > 
+const deleteUrl = "{{ url('offertsModerator') }}/";
+    function usunOferte(del_id) {
+          var _this = this;
+          Swal.fire({
+            title: "Czy na pewno chcesz usunąć ofertę?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Tak',
+            cancelButtonText: 'Nie'
+          }).then(function (result) {
+            if (result.value) {
+              $.ajax({
+                method: "DELETE",
+                url: deleteUrl + del_id
+              }).done(function (data) {
+                window.location.reload();
+              }).fail(function (data) {
+                Swal.fire('Coś poszło nie tak...spróbuj ponownie później', data.responseJSON.message, data.responseJSON.status);
+              });
+            }
+          });
+    }
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{asset('/js/offertsmanagelist.js')}}"></script>
 @endsection
