@@ -134,6 +134,10 @@
                                             @enderror  
                                         </div>
                                     </div>
+                                    <div id="myModal{{ $image->id }}" class="modal">
+                                        <span class="close" id="close{{ $image->id }}">&times;</span>
+                                        <img class="modal-content" id="img{{ $image->id }}">
+                                    </div>
                                 @endif
                             @endforeach
                             @if($images->count() > 2)
@@ -143,14 +147,11 @@
                                         @foreach($images as $image)
                                             @if($image->is_main == false)
                                                 <li class="tile">
-                                                    {{-- <a
-                                                        data-thumb="{{ asset($image->url) }}"
-                                                        data-alt="zdjęcie"
-                                                        data-height="2000"
-                                                        data-width="3000"
-                                                    > --}}
-                                                        <img src="{{ asset($image->url) }}" class="image" alt="zdjęcie" title="zdjęcie" loading="lazy">
-                                                    </a>
+                                                        <img src="{{ asset($image->url) }}" id="{{ $image->id }}" onclick="openModal({{ $image->id }})" class="image" alt="zdjęcie" title="zdjęcie" loading="lazy">
+                                                        <div id="myModal{{ $image->id }}" class="modal">
+                                                            <span class="close" id="close{{ $image->id }}">&times;</span>
+                                                            <img class="modal-content" id="img{{ $image->id }}">
+                                                        </div>
                                                 </li>
                                             @endif
                                         @endforeach
@@ -167,8 +168,11 @@
                                     @if($image->is_main == false)
                                         <div class="form-group row">
                                             <label for="image2">Zdjęcie poboczne</label>
-                                            <img src="{{ asset($image->url) }}" class="image2" alt="Zdjęcie poboczne" title="Zdjęcie poboczne" loading="lazy">
-                                            
+                                            <img src="{{ asset($image->url) }}" class="image2" id="{{ $image->id }}" onclick="openModal({{ $image->id }})" alt="Zdjęcie poboczne" title="Zdjęcie poboczne" loading="lazy">
+                                            <div id="myModal{{ $image->id }}" class="modal">
+                                                <span class="close" id="close{{ $image->id }}">&times;</span>
+                                                <img class="modal-content" id="img{{ $image->id }}">
+                                            </div>
                                             <div class="col-md-2">
                                                 <label for="images">Wybierz inne pozostałe zdjęcia</label>
                                                 <input type="file" name="images[]" multiple>
@@ -216,32 +220,38 @@
        });
        
     });
-     
+ 
+    
+    function openModal(id) {
+        var modal = document.getElementById("myModal"+id);
+        var img = document.getElementById(id);
+        var modalImg = document.getElementById("img"+id);
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        closeModal(id);
+    }
+
+    function closeModal(id) {
+        var modal = document.getElementById("myModal"+id);
+        var closeButton = document.getElementById("close"+id);
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
+    // function closeModal(id) {
+    //     var modal = document.getElementById("myModal"+id);
+    //     window.onclick = function(event) {
+    //         if (event.target == modal) {
+    //         modal.style.display = "none";
+    //         }
+    //     }
+    // }
+
 </script>
-{{-- <script type="text/javascript">
 
-    // // initialize
-    let bp = BiggerPicture({
-        target: document.body,
-    })
-    // let bp = @vite('BiggerPicture');
-
-    // grab image links
-    let imageLinks = document.querySelectorAll('#photos > li > a')
-
-    // add click listener to open BiggerPicture
-    for (let link of imageLinks) {
-    link.addEventListener("click", openGallery);
-    }
-
-    // function to open BiggerPicture
-    function openGallery(e) {
-        e.preventDefault()
-        bp.open({
-            items: imageLinks,
-            el: e.currentTarget,
-        })
-    }
-
-</script> --}}
 @endsection

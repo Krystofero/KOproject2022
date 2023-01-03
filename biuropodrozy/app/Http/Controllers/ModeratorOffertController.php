@@ -220,7 +220,7 @@ class ModeratorOffertController extends Controller
         $updatedoffert->save();
 
         // return redirect(route('offertsModerator.index'))->with('status', __('offerts.update.success'));
-        return redirect()->back()->with('status', ('Oferta została zaktualizwoana pomyślnie'));
+        return redirect()->back()->with('status', ('Oferta została zaktualizowana pomyślnie'));
     }
 
   /**
