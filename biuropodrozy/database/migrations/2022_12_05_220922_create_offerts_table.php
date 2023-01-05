@@ -27,6 +27,7 @@ return new class extends Migration
                 $table->date('enddate');
                 $table->boolean('lastminute')->default(false); //czy oferta jest last minute
                 $table->boolean('promotion')->default(false);
+                $table->integer('promo')->nullable();
                 $table->decimal('promotionprice', 10, 2)->nullable(); //cena promocyjna
                 $table->decimal('insuranceprice', 10, 2)->nullable(); //cena z ubezbieczniem zdrowotnym
                 $table->string('region');

@@ -75,6 +75,7 @@ class ModeratorOffertController extends Controller
             'nights' => 'required|numeric|gt:0',
             // 'lastminute' => 'nullable|boolean',
             // 'promotion' => 'nullable|boolean',
+            'promo' => 'nullable|numeric|min:1|gt:0',
             'promotionprice' => 'nullable|numeric|min:3|gt:0',
             'insuranceprice' => 'nullable|numeric|min:3|gt:0',
             'region' => 'required|String|max:100',
@@ -221,6 +222,7 @@ class ModeratorOffertController extends Controller
             'nights' => 'required|numeric|gt:0',
             // 'lastminute' => 'nullable|boolean',
             // 'promotion' => 'nullable|boolean',
+            'promo' => 'nullable|numeric|min:1|gt:0',
             'promotionprice' => 'nullable|numeric|min:3|gt:0',
             'insuranceprice' => 'nullable|numeric|min:3|gt:0',
             'region' => 'required|String|max:100',
@@ -301,6 +303,7 @@ class ModeratorOffertController extends Controller
         $new_startdate = $request->all()['startdate'];
         $new_enddate = $request->all()['enddate'];
         $new_nights = $request->all()['nights'];
+        $new_promo = $request->all()['promo'];
         $new_promotionprice = $request->all()['promotionprice'];
         $new_insuranceprice = $request->all()['insuranceprice'];
         $new_region = $request->all()['region'];
@@ -326,6 +329,7 @@ class ModeratorOffertController extends Controller
         $updatedoffert->startdate = $new_startdate;
         $updatedoffert->enddate = $new_enddate;
         $updatedoffert->nights = $new_nights;
+        $updatedoffert->promo = $new_promo;
         $updatedoffert->promotionprice = $new_promotionprice;
         $updatedoffert->insuranceprice = $new_insuranceprice;
         $updatedoffert->region = $new_region;

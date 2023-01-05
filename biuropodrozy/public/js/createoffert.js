@@ -36,6 +36,30 @@
         }
     }
 
+    function enableInput2(el1,el2,el3) {
+        // Get the checkbox and the input field using their ids
+        var checkbox = document.getElementById(el1);
+        var input = document.getElementById(el2);
+        var val2 = document.getElementById(el3);
+        
+        // Check if the checkbox is checked
+        if (checkbox.checked) {
+            // Enable the input field
+            input.disabled = false;
+        } else {
+            if (!input.value.trim() && !checkbox.checked) {
+                // Prevent the checkbox from being unchecked
+                event.preventDefault();
+            }
+            else{
+                // Disable the input field
+                input.disabled = true;
+                input.value = null;
+                val2.value = null;
+            }
+        }
+    }
+
     // get the input elements
     const startDateInput = document.getElementById('startdateturnus');
     const endDateInput = document.getElementById('enddateturnus');
@@ -45,7 +69,7 @@
 
     // define the onchange function
     function calculateNumDays() {
-        console.log("mam");
+        // console.log("mam");
         // get the start and end dates from the input elements
         let startDate = new Date(startDateInput.value);
         let endDate = new Date(endDateInput.value);
@@ -75,10 +99,10 @@
     endDateInput.onchange = calculateNumDays;
 
     function enableOnLoad(id) {
-        // Get the textarea using its id
+        // Get the element using its id
         var el = document.getElementById(id);
         
-        // Check if the textarea is not empty
+        // Check if the element is not empty
         if (el.value.trim()) {
             // Enable the textarea
             el.disabled = false;
@@ -86,6 +110,44 @@
     }
 
     window.onload = function() {
-        enableOnLoad('promotionprice');
+        // enableOnLoad('promotionprice');
         enableOnLoad('allindescription');
+        enableOnLoad('promo');
     };
+
+    //function for calculating promo values
+    function calculateValue(el1,el2) {
+        // Get the checkbox and the input field using their ids
+        var promo = document.getElementById(el1);
+        var promoprice = document.getElementById(el2);
+        var price = document.getElementById('price').value;
+
+        if(promo.value != null){
+            // get the value of the input element
+            const percent = parseFloat(promo.value);
+            
+            var newprice = price * ((100 - percent) / 100);
+            // round the value to 2 decimal places
+            const roundedValue = Math.round(newprice * 100) / 100;
+
+            promoprice.value = roundedValue;
+        }
+        if(price == 0) {console.log("mam");
+            document.getElementById('promotion').checked = false;
+            promo.value = null;
+            promoprice.value = null;
+            promo.disabled = true;
+        }
+    }
+
+    //function for checking min max values
+    function enforceMinMax(el) {
+        if (el.value != "") {
+          if (parseInt(el.value) < parseInt(el.min)) {
+            el.value = el.min;
+          }
+          else if (parseInt(el.value) > parseInt(el.max)) {
+            el.value = el.max;
+          }
+        }
+      }

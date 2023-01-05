@@ -31,7 +31,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="price">Cena*</label>
-                                <input name="price" id="price" class="form-control" value="{{ old('price') }}" type="number" min="0" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" required autofocus></input>
+                                <input name="price" id="price" class="form-control" onchange="calculateValue('promo','promotionprice')" value="{{ old('price') }}" type="number" min="0" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" required autofocus></input>
                                 <small id="priceHelp" class="form-text text-muted">Wprowadź cenę oferty.</small>
 
                                 @error('price')
@@ -98,7 +98,7 @@
                                 @enderror  
                             </div>
                         </div>
-                        <div class="form-group row mb-0 ">
+                        {{-- <div class="form-group row mb-0 ">
                             <div class="col-md-2">
                                 <input type="checkbox" name="lastminute" class="bigcheckbox" id="lastminute" value="{{ old('lastminute') }}" aria-describedby="lastminuteHelp" autocomplete="lastminute" autofocus></input>
                                 <label for="lastminute">Last minute</label>
@@ -129,6 +129,55 @@
                                 @enderror  
                             </div>
                             <div class="col-md-4">
+                                <label for="insuranceprice">Cena z dodatkowym ubezpieczeniem</label>
+                                <input name="insuranceprice" id="insuranceprice" class="form-control" value="{{ old('insuranceprice') }}" type="number" min="0" step=".01" aria-describedby="insurancepriceHelp" autocomplete="insuranceprice" autofocus></input>
+                                <small id="insurancepriceHelp" class="form-text text-muted">Wprowadź cenę oferty z dodatkowym ubezpieczeniem.</small>
+
+                                @error('insuranceprice')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror  
+                            </div>
+                        </div> --}}
+                        <div class="form-group row mb-0 ">
+                            <div class="col-md-2">
+                                <input type="checkbox" name="lastminute" class="bigcheckbox" id="lastminute" value="{{ old('lastminute') }}" aria-describedby="lastminuteHelp" autocomplete="lastminute" autofocus></input>
+                                <label for="lastminute">Last minute</label>
+                                <br>
+                                <small id="lastminuteHelp" class="form-text text-muted">Zaznacz jeżeli oferta ma pojawiać się w dziale "Last minute"</small>
+
+                                @error('lastminute')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror    
+                            </div>
+                            <div class="col-md-2">
+                                <input type="checkbox" name="promotion" class="bigcheckbox" id="promotion" onchange="enableInput2('promotion', 'promo', 'promotionprice')" value="{{ old('promotion') }}" aria-describedby="promotionHelp" autocomplete="promotion" autofocus></input>
+                                <label for="promotion">Promocja</label>
+                                <br>
+                                <small id="promotionHelp" class="form-text text-muted">Zaznacz jeżeli oferta ma być w promocji</small>
+
+                                @error('promotion')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror  
+                            </div>
+                            <div class="col-md-2">
+                                <label for="promo">Promocja w %</label>
+                                <input name="promo" id="promo" class="form-control" onchange="calculateValue('promo','promotionprice')" onkeyup=enforceMinMax(this) value="{{ old('promo') }}" type="number" min="0" max="99" step="1" aria-describedby="promoHelp" autocomplete="promo" disabled autofocus></input>
+                                <small id="promoHelp" class="form-text text-muted">Wprowadź ilość procentów promocji oferty (cena zostanie wyliczona automatycznie).</small>
+
+                                @error('promo')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror 
+                            </div>
+                            <div class="col-md-3">
+                                <label for="promotionprice">Cena promocyjna</label>
+                                <input name="promotionprice" id="promotionprice" class="form-control" value="{{ old('promotionprice') }}" type="number" min="0" step=".01" aria-describedby="promotionpriceHelp" autocomplete="promotionprice" readonly autofocus></input>
+                                <small id="promotionpriceHelp" class="form-text text-muted">Wprowadź cenę promocyjną oferty.</small>
+
+                                @error('promotionprice')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror  
+                            </div>
+                            <div class="col-md-3">
                                 <label for="insuranceprice">Cena z dodatkowym ubezpieczeniem</label>
                                 <input name="insuranceprice" id="insuranceprice" class="form-control" value="{{ old('insuranceprice') }}" type="number" min="0" step=".01" aria-describedby="insurancepriceHelp" autocomplete="insuranceprice" autofocus></input>
                                 <small id="insurancepriceHelp" class="form-text text-muted">Wprowadź cenę oferty z dodatkowym ubezpieczeniem.</small>
