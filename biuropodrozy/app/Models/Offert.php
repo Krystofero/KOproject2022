@@ -33,6 +33,7 @@ class Offert extends Model
         'nights',
         'lastminute',
         'promotion',
+        'promo',
         'promotionprice',
         'insuranceprice',
         'region',
