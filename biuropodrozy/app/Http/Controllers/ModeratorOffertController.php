@@ -135,14 +135,16 @@ class ModeratorOffertController extends Controller
         $image->offert_id = $offert->id;
         $image->save();
         //Dodawanie pozostałych zdjęć
-        foreach ($request->file('images') as $imagefile) {
-            $image = new Image;
-            $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
-            $image->url = $path;
-            $image->is_main = false;
-            $image->offert_id = $offert->id;
-            $image->save();
-          }
+        if($request->file('images') != null){
+            foreach ($request->file('images') as $imagefile) {
+                $image = new Image;
+                $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
+                $image->url = $path;
+                $image->is_main = false;
+                $image->offert_id = $offert->id;
+                $image->save();
+            }
+        }
 
         return redirect(route('offertsModerator.show', $offert->id)); //przekierowanie do widoku wyglądu oferty
     }
@@ -265,27 +267,31 @@ class ModeratorOffertController extends Controller
             'is_main' => true
         ])->get();
         // dd($updatedimage[0]);
-        $new_main_image_url = $request->file('image')->store('/images/resource', ['disk' =>   'my_files']);
-        // dd($new_main_image_url);
-        $updatedimage[0]->url = $new_main_image_url;
-        $updatedimage[0]->save();
+        // dd($request['image']);
+        if($request['image'] != null){
+            $new_main_image_url = $request->file('image')->store('/images/resource', ['disk' =>   'my_files']);
+            // dd($new_main_image_url);
+            $updatedimage[0]->url = $new_main_image_url;
+            $updatedimage[0]->save();
+        }
 
         ////Update zdjęć pobocznych
-        //usunięcie starych
-        DB::table('images')->where([
-            'offert_id' => $id,
-            'is_main' => false
-        ])->delete();
-        //dodanie nowych
-        foreach ($request->file('images') as $imagefile) {
-            $image = new Image;
-            $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
-            $image->url = $path;
-            $image->is_main = false;
-            $image->offert_id = $id;
-            $image->save();
-          }
-
+        if($request->file('images') != null){
+            //usunięcie starych zdjęć pobocznych
+            DB::table('images')->where([
+                'offert_id' => $id,
+                'is_main' => false
+            ])->delete();
+            //dodanie nowych zdjęć pobocznych
+            foreach ($request->file('images') as $imagefile) {
+                $image = new Image;
+                $path = $imagefile->store('/images/resource', ['disk' =>   'my_files']);
+                $image->url = $path;
+                $image->is_main = false;
+                $image->offert_id = $id;
+                $image->save();
+            }
+        }
         $new_title = $request->all()['title'];
         $new_country = $request->all()['country'];
         $new_description = $request->all()['description'];

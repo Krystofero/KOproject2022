@@ -296,6 +296,7 @@
                                         <div class="col-md-2">
                                             <label for="image">Wybierz inne zdjęcie główne</label>
                                             <input type="file" name="image" id="image"></input>
+                                            <small id="imageHelp" class="form-text text-muted">(jeśli pozostawisz puste stare zdjęcie pozostanie niezmienione)</small>
                                             @error('image')
                                                 <small class="form-text text-danger">{{$message}}</small>
                                             @enderror  
@@ -326,9 +327,21 @@
                                     </ul>
                                     <label for="images">Wybierz inne pozostałe zdjęcia</label>
                                     <input type="file" name="images[]" multiple></input>
+                                    <small id="imagesHelp" class="form-text text-muted">(jeśli pozostawisz puste stare zdjęcia pozostaną niezmienione)</small>
                                     @error('images')
                                         <small class="form-text text-danger">{{$message}}</small>
                                     @enderror 
+                                </div>
+                            @elseif(($images->count() == 1))
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label for="images">Wybierz inne pozostałe zdjęcia</label>
+                                        <input type="file" name="images[]" multiple></input>
+                                        @error('images')
+                                            <small class="form-text text-danger">{{$message}}</small>
+                                        @enderror 
+                                    </div>
                                 </div>
                             @else
                                 @foreach($images as $image)
@@ -343,6 +356,7 @@
                                             <div class="col-md-2">
                                                 <label for="images">Wybierz inne pozostałe zdjęcia</label>
                                                 <input type="file" name="images[]" multiple></input>
+                                                <small id="imagesHelp" class="form-text text-muted">(jeśli pozostawisz puste stare zdjęcia pozostaną niezmienione)</small>
                                                 @error('images')
                                                     <small class="form-text text-danger">{{$message}}</small>
                                                 @enderror 
