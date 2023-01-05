@@ -27,11 +27,24 @@ $(document).ready(function (e) {
      closeModal(id);
  }
 
- function closeModal(id) {
+//  function closeModal(id) {
+//      var modal = document.getElementById("myModal"+id);
+//      var closeButton = document.getElementById("close"+id);
+//      closeButton.onclick = function() {
+//          modal.style.display = "none";
+//      }
+//  }
+
+  function closeModal(id) {
      var modal = document.getElementById("myModal"+id);
      var closeButton = document.getElementById("close"+id);
      closeButton.onclick = function() {
          modal.style.display = "none";
+     }
+     window.onclick = function(event) {
+         if (event.target == modal) {
+         modal.style.display = "none";
+         }
      }
  }
 
@@ -111,11 +124,3 @@ $(document).ready(function (e) {
      enableOnLoad('allindescription');
  };
 
- // function closeModal(id) {
- //     var modal = document.getElementById("myModal"+id);
- //     window.onclick = function(event) {
- //         if (event.target == modal) {
- //         modal.style.display = "none";
- //         }
- //     }
- // }
