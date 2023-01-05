@@ -259,7 +259,7 @@
                         <br>
                         <div class="form-group">
                             <label for="image">Wybierz zdjęcie główne</label>
-                            <input type="file" name="image" id="image" required>
+                            <input type="file" name="image" id="image" required></input>
                             @error('image')
                                 <small class="form-text text-danger">{{$message}}</small>
                             @enderror  
@@ -271,7 +271,7 @@
                         <br>
                         <div class="form-group">
                             <label for="images">Wybierz pozostałe zdjęcia</label>
-                            <input type="file" name="images[]" multiple>
+                            <input type="file" name="images[]" multiple></input>
                             @error('images')
                                 <small class="form-text text-danger">{{$message}}</small>
                             @enderror 

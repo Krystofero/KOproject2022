@@ -24,9 +24,15 @@
             // Enable the input field
             input.disabled = false;
         } else {
-            // Disable the input field
-            input.disabled = true;
-            input.value = null;
+            if (!input.value.trim() && !checkbox.checked) {
+                // Prevent the checkbox from being unchecked
+                event.preventDefault();
+            }
+            else{
+                // Disable the input field
+                input.disabled = true;
+                input.value = null;
+            }
         }
     }
 
@@ -67,3 +73,19 @@
     // attach the onchange function to the input elements
     startDateInput.onchange = calculateNumDays;
     endDateInput.onchange = calculateNumDays;
+
+    function enableOnLoad(id) {
+        // Get the textarea using its id
+        var el = document.getElementById(id);
+        
+        // Check if the textarea is not empty
+        if (el.value.trim()) {
+            // Enable the textarea
+            el.disabled = false;
+        }
+    }
+
+    window.onload = function() {
+        enableOnLoad('promotionprice');
+        enableOnLoad('allindescription');
+    };
