@@ -6,11 +6,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header h3 text-center">{{ __('Tworzenie nowej oferty') }}</div>
+                <p class="right">* - pole obowiązkowe</p>
                 <div class="card-body">
                     <form method="post" action="{{ route('offertsModerator.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="title">Nazwa</label>
+                            <label for="title">Nazwa*</label>
                             <input name="title" id="title" class="form-control" value="{{ old('title') }}" type="text" aria-describedby="titleHelp" placeholder="Wprowadź tytuł" required autocomplete="title" autofocus></input>
                             <small id="titleHelp" class="form-text text-muted">Podaj unikalną nazwę oferty.</small>
 
@@ -20,7 +21,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8">
-                                <label for="country">Kraj</label>
+                                <label for="country">Kraj*</label>
                                 <input name="country" id="country" class="form-control" value="{{ old('country') }}" type="text" aria-describedby="countryHelp" placeholder="Wprowadź kraj" required autocomplete="country" autofocus></input>
                                 <small id="countryHelp" class="form-text text-muted">Podaj kraj oferty.</small>
 
@@ -29,7 +30,7 @@
                                 @enderror    
                             </div>
                             <div class="col-md-4">
-                                <label for="price">Cena</label>
+                                <label for="price">Cena*</label>
                                 <input name="price" id="price" class="form-control" value="{{ old('price') }}" type="number" min="0" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" required autofocus></input>
                                 <small id="priceHelp" class="form-text text-muted">Wprowadź cenę oferty.</small>
 
@@ -49,7 +50,7 @@
                         </div>
                         <div class="form-group row mb-0 ">
                             <div class="col-md-5">
-                                <label for="startdateturnus">Data początkowa czasu trwania turnusu</label>
+                                <label for="startdateturnus">Data początkowa czasu trwania turnusu*</label>
                                 <input name="startdateturnus" id="startdateturnus" class="form-control" value="{{ old('startdateturnus') }}" type="date" aria-describedby="startdateturnusHelp" placeholder="Wprowadź datę początkową turnusu" required autocomplete="startdateturnus" autofocus></input>
                                 <small id="startdateturnusHelp" class="form-text text-muted">Data określająca początek turnusu.</small>
 
@@ -58,7 +59,7 @@
                                 @enderror    
                             </div>
                             <div class="col-md-5">
-                                <label for="enddateturnus">Data końcowa czasu trwania turnusu</label>
+                                <label for="enddateturnus">Data końcowa czasu trwania turnusu*</label>
                                 <input name="enddateturnus" id="enddateturnus" class="form-control" value="{{ old('enddateturnus') }}" type="date" aria-describedby="enddateturnusHelp" placeholder="Wprowadź datę końcową turnusu" required autocomplete="enddateturnus" autofocus></input>
                                 <small id="enddateturnusHelp" class="form-text text-muted">Data określająca koniec turnusu.</small>
 
@@ -79,7 +80,7 @@
                         
                         <div class="form-group row mb-0 ">
                             <div class="col-md-6">
-                                <label for="startdate">Data początkowa czasu trwania oferty</label>
+                                <label for="startdate">Data początkowa czasu trwania oferty*</label>
                                 <input name="startdate" id="startdate" class="form-control" value="{{ old('startdate') }}" type="date" aria-describedby="startdateHelp" placeholder="Wprowadź datę początkową oferty" required autocomplete="startdate" autofocus></input>
                                 <small id="startdateHelp" class="form-text text-muted">Data określająca początek możliwości wyświetlania oferty.</small>
 
@@ -88,7 +89,7 @@
                                 @enderror    
                             </div>
                             <div class="col-md-6">
-                                <label for="enddate">Data końcowa czasu trwania oferty</label>
+                                <label for="enddate">Data końcowa czasu trwania oferty*</label>
                                 <input name="enddate" id="enddate" class="form-control" value="{{ old('enddate') }}" type="date" aria-describedby="enddateHelp" placeholder="Wprowadź datę końcową oferty" required autocomplete="enddate" autofocus></input>
                                 <small id="enddateHelp" class="form-text text-muted">Data określająca koniec możliwości wyświetlania oferty.</small>
 
@@ -139,7 +140,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6">
-                                <label for="region">Region</label>
+                                <label for="region">Region*</label>
                                 <input name="region" id="region" class="form-control" value="{{ old('region') }}" type="text" aria-describedby="regionHelp" placeholder="Wprowadź region" required autocomplete="region" autofocus></input>
                                 <small id="regionHelp" class="form-text text-muted">Podaj region oferty (np. Wyspy Kanaryjskie)</small>
 
@@ -148,7 +149,7 @@
                                 @enderror    
                             </div>
                             <div class="col-md-6">
-                                <label for="city">Miasto</label>
+                                <label for="city">Miasto*</label>
                                 <input name="city" id="city" class="form-control" value="{{ old('city') }}" type="text" aria-describedby="cityHelp" placeholder="Wprowadź miasto" required autocomplete="city" autofocus></input>
                                 <small id="cityHelp" class="form-text text-muted"></small>
 
@@ -200,7 +201,7 @@
                         </div>
                         <div class="form-group row mb-0 ">
                             <div class="col-md-2">
-                                <label for="persnum">Ilość osób</label>
+                                <label for="persnum">Ilość osób*</label>
                                 <input type="number" min="0" name="persnum" class="form-control" id="persnum" value="{{ old('persnum') }}" aria-describedby="persnumHelp" autocomplete="persnum" autofocus required></input>
                                 <small id="persnum" class="form-text text-muted"></small>
 
@@ -209,7 +210,7 @@
                                 @enderror  
                             </div>
                             <div class="col-md-5">
-                                <label for="hemail">Email hotelu</label>
+                                <label for="hemail">Email hotelu*</label>
                                 <input name="hemail" id="hemail" class="form-control" value="{{ old('hemail') }}" type="email" aria-describedby="hemailHelp" autocomplete="hemail" autofocus required></input>
                                 <small id="hemailHelp" class="form-text text-muted">Wprowadź cenę promocyjną oferty.</small>
 
@@ -218,7 +219,7 @@
                                 @enderror  
                             </div>
                             <div class="col-md-5">
-                                <label for="htel">Telefon hotelu</label>
+                                <label for="htel">Telefon hotelu*</label>
                                 <input name="htel" id="htel" class="form-control" value="{{ old('htel') }}" type="tel" maxlength="15" aria-describedby="htelHelp" autocomplete="htel" autofocus required></input>
                                 <small id="htelHelp" class="form-text text-muted">Wprowadź cenę oferty z dodatkowym ubezpieczeniem.</small>
 
@@ -258,7 +259,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="image">Wybierz zdjęcie główne</label>
+                            <label for="image">Wybierz zdjęcie główne*</label>
                             <input type="file" name="image" id="image" required></input>
                             @error('image')
                                 <small class="form-text text-danger">{{$message}}</small>
