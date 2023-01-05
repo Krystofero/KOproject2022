@@ -64,16 +64,61 @@ class ModeratorOffertController extends Controller
         $data = request()->validate([
             'title' => 'required|String|max:150',
             'country' => 'required|String|max:100',
-            'description' => 'required|String|max:255',
+            'description' => 'nullable|String|max:255',
             'startdateturnus' => 'required|date|before_or_equal:enddateturnus|after_or_equal:enddate',
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
-            'price' => 'required|numeric|min:3',
+            'price' => 'required|numeric|min:3|gt:0',
             'startdate' => 'required|date|before_or_equal:enddate',
             'enddate' => 'required|date|after_or_equal:startdate',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' //zdjęcie główne
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', //zdjęcie główne
+            'nights' => 'required|numeric|gt:0',
+            // 'lastminute' => 'nullable|boolean',
+            // 'promotion' => 'nullable|boolean',
+            'promotionprice' => 'nullable|numeric|min:3|gt:0',
+            'insuranceprice' => 'nullable|numeric|min:3|gt:0',
+            'region' => 'required|String|max:100',
+            'city' => 'required|String|max:100',
+            // 'allinclusive' => 'nullable|boolean',
+            'allindescription' => 'nullable|String|max:255',
+            'placedescription' => 'nullable|String|max:255',
+            'pricedescription' => 'nullable|String|max:255',
+            'persnum' => 'required|numeric|gt:0',
+            'hemail' => 'required|String|email|max:255',
+            'htel' => 'required|numeric|digits_between:9,15',
+            'hoteldescription' => 'nullable|String|max:255',
+            'roomsdescription' => 'nullable|String|max:255',
+            'disdescription' => 'nullable|String|max:255'
         ]);
+        if($request->has('lastminute')){
+            //Checkbox checked
+            $data['lastminute'] = true;
+        }else{
+            //Checkbox not checked
+            $data['lastminute'] = false;
+        }
+
+        if($request->has('promotion')){
+            //Checkbox checked
+            $data['promotion'] = true;
+        }else{
+            //Checkbox not checked
+            $data['promotion'] = false;
+        }
+
+        if($request->has('allinclusive')){
+            //Checkbox checked
+            $data['allinclusive'] = true;
+        }else{
+            //Checkbox not checked
+            $data['allinclusive'] = false;
+        }
+
         // dd($request['image']);
+        // dd($data['promotion']);
+        // dd($data['promotionprice']);
+        // dd($data['allinclusive']);
+        // dd($data['allindescription']);
 
         $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
         $offert = offert::create($data);
@@ -99,7 +144,7 @@ class ModeratorOffertController extends Controller
             $image->save();
           }
 
-        return redirect(route('offertsModerator.show', $offert->id)); //przekierowanie do dalszej edycji oferty i dodawania zdjęć
+        return redirect(route('offertsModerator.show', $offert->id)); //przekierowanie do widoku wyglądu oferty
     }
 
     /**
@@ -116,8 +161,10 @@ class ModeratorOffertController extends Controller
         // return view('offert.show', compact('offert'));
 
         $offert = DB::table('offerts')->get()->where('id', $id)->first(); //znajduje pierwszy element w tabeli o podanym id
+        $images = DB::table('images')->get()->where('offert_id', $id);
         return view('offerts.show', [
-            'offert' => $offert
+            'offert' => $offert,
+            'images' => $images
         ]);
     }
 
@@ -161,15 +208,57 @@ class ModeratorOffertController extends Controller
         $request->validate([
             'title' => 'required|String|max:150',
             'country' => 'required|String|max:100',
-            'description' => 'required|String|max:255',
+            'description' => 'nullable|String|max:255',
             'startdateturnus' => 'required|date|before_or_equal:enddateturnus|after_or_equal:enddate',
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
-            'price' => 'required|numeric|min:3',
+            'price' => 'required|numeric|min:3|gt:0',
             'startdate' => 'required|date|before_or_equal:enddate',
             'enddate' => 'required|date|after_or_equal:startdate',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' //zdjęcie główne
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', //zdjęcie główne
+            'nights' => 'required|numeric|gt:0',
+            // 'lastminute' => 'nullable|boolean',
+            // 'promotion' => 'nullable|boolean',
+            'promotionprice' => 'nullable|numeric|min:3|gt:0',
+            'insuranceprice' => 'nullable|numeric|min:3|gt:0',
+            'region' => 'required|String|max:100',
+            'city' => 'required|String|max:100',
+            // 'allinclusive' => 'nullable|boolean',
+            'allindescription' => 'nullable|String|max:255',
+            'placedescription' => 'nullable|String|max:255',
+            'pricedescription' => 'nullable|String|max:255',
+            'persnum' => 'required|numeric|gt:0',
+            'hemail' => 'required|String|email|max:255',
+            'htel' => 'required|numeric|digits_between:9,15',
+            'hoteldescription' => 'nullable|String|max:255',
+            'roomsdescription' => 'nullable|String|max:255',
+            'disdescription' => 'nullable|String|max:255'
         ]);
+        if($request->has('lastminute')){
+            //Checkbox checked
+            $request['lastminute'] = true;
+        }else{
+            //Checkbox not checked
+            $request['lastminute'] = false;
+        }
+
+        if($request->has('promotion')){
+            //Checkbox checked
+            $request['promotion'] = true;
+        }else{
+            //Checkbox not checked
+            $data['promotion'] = false;
+        }
+
+        if($request->has('allinclusive')){
+            //Checkbox checked
+            $request['allinclusive'] = true;
+        }else{
+            //Checkbox not checked
+            $request['allinclusive'] = false;
+        }
+
+
         ////Update zdjęcia głównego
         $updatedimage = Image::where([
             'offert_id' => $id,

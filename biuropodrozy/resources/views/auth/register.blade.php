@@ -54,10 +54,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Telefon') }}  <i class="fas fa-at"></i></label>
+                            <label for="tel" class="col-md-4 col-form-label text-md-end">{{ __('Telefon') }}  <i class="fas fa-at"></i></label>
 
                             <div class="col-md-6">
-                                <input id="tel" type="tel" maxlength="15" class="form-control @error('email') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="email">
+                                <input id="tel" type="tel" maxlength="15" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel">
 
                                 @error('tel')
                                     <span class="invalid-feedback" role="alert">

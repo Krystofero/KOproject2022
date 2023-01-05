@@ -29,7 +29,24 @@ class Offert extends Model
         'price',
         'user_id',
         'startdate',
-        'enddate'
+        'enddate',
+        'nights',
+        'lastminute',
+        'promotion',
+        'promotionprice',
+        'insuranceprice',
+        'region',
+        'city',
+        'allinclusive',
+        'allindescription',
+        'placedescription',
+        'pricedescription',
+        'persnum',
+        'hemail',
+        'htel',
+        'hoteldescription',
+        'roomsdescription',
+        'disdescription'
     ];
 
     // public function user()
