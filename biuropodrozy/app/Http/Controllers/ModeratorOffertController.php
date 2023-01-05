@@ -249,7 +249,7 @@ class ModeratorOffertController extends Controller
             $request['promotion'] = true;
         }else{
             //Checkbox not checked
-            $data['promotion'] = false;
+            $request['promotion'] = false;
         }
 
         if($request->has('allinclusive')){
@@ -300,6 +300,20 @@ class ModeratorOffertController extends Controller
         $new_price = $request->all()['price'];
         $new_startdate = $request->all()['startdate'];
         $new_enddate = $request->all()['enddate'];
+        $new_nights = $request->all()['nights'];
+        $new_promotionprice = $request->all()['promotionprice'];
+        $new_insuranceprice = $request->all()['insuranceprice'];
+        $new_region = $request->all()['region'];
+        $new_city = $request->all()['city'];
+        $new_allindescription = $request->all()['allindescription'];
+        $new_placedescription = $request->all()['placedescription'];
+        $new_pricedescription = $request->all()['pricedescription'];
+        $new_persnum = $request->all()['persnum'];
+        $new_hemail = $request->all()['hemail'];
+        $new_htel = $request->all()['htel'];
+        $new_hoteldescription = $request->all()['hoteldescription'];
+        $new_roomsdescription = $request->all()['roomsdescription'];
+        $new_disdescription = $request->all()['disdescription'];
 
         $updatedoffert = Offert::find($id);
 
@@ -311,6 +325,20 @@ class ModeratorOffertController extends Controller
         $updatedoffert->price = $new_price;
         $updatedoffert->startdate = $new_startdate;
         $updatedoffert->enddate = $new_enddate;
+        $updatedoffert->nights = $new_nights;
+        $updatedoffert->promotionprice = $new_promotionprice;
+        $updatedoffert->insuranceprice = $new_insuranceprice;
+        $updatedoffert->region = $new_region;
+        $updatedoffert->city = $new_city;
+        $updatedoffert->allindescription = $new_allindescription;
+        $updatedoffert->placedescription = $new_placedescription;
+        $updatedoffert->pricedescription = $new_pricedescription;
+        $updatedoffert->persnum = $new_persnum;
+        $updatedoffert->hemail = $new_hemail;
+        $updatedoffert->htel = $new_htel;
+        $updatedoffert->hoteldescription = $new_hoteldescription;
+        $updatedoffert->roomsdescription = $new_roomsdescription;
+        $updatedoffert->disdescription = $new_disdescription;
 
         $updatedoffert->save();
 
