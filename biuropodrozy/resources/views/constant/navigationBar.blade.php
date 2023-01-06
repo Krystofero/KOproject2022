@@ -1,5 +1,5 @@
 {{-- Navigation Bar on the up site - included in files --}}
-<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <!-- Logo -->
         {{-- <img src="{{URL::asset('/image/Logo.png')}}" width="45" height="40"> --}}
