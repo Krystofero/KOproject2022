@@ -21,7 +21,6 @@ $(document).ready(function (e) {
      img.onclick = function(){
          modal.style.display = "block";
          modalImg.src = this.src;
-         captionText.innerHTML = this.alt;
      }
 
      closeModal(id);
