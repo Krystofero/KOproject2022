@@ -60,7 +60,16 @@ class OffertController extends Controller
             $promotion = request()->promotion;
             $lastminute = request()->lastminute;
             $allinclusive = request()->allinclusive;
-            // dd($promotion);
+            $lato = request()->lato;
+
+            $latostart = null;
+            $latoend = null;
+
+            if($lato == 1){
+                $latostart = '2023-06-01';
+                $latoend = '2023-10-01';
+            }
+            // dd($latostart);
 
             return view('offerts.list',[ 
                 // 'offerts' =>  Offert::all(), #lista wszystkich ofert
@@ -69,7 +78,10 @@ class OffertController extends Controller
                 'countries' => $countries,
                 'regions' => $regions,
                 'promotion' => $promotion,
-                'lastminute' => $lastminute
+                'lastminute' => $lastminute,
+                'lato' => $lato,
+                'latostart' => $latostart,
+                'latoend' => $latoend
             ]);
             
     }

@@ -78,11 +78,17 @@
             </div>
             <div class="form-group">
                 <label for="startdate">Data początkowa:</label>
-                <input type="date" class="form-control" id="startdate">
+                <input type="date" class="form-control" id="startdate"
+                @if(request()->lato == 1)
+                    value='{{ $latostart }}'
+                @endif>
             </div>
             <div class="form-group">
                 <label for="enddate">Data końcowa:</label>
-                <input type="date" class="form-control" id="enddate">
+                <input type="date" class="form-control" id="enddate"
+                @if(request()->lato == 1)
+                    value='{{ $latoend }}'
+                @endif>
             </div>
             <div class="form-check">
                 <input
@@ -303,6 +309,9 @@
 var promotion = '{{ request()->promotion }}';
 var lastminute = '{{ request()->lastminute }}';
 var allinclusive = '{{ request()->allinclusive }}';
+var latostart = '{{ $latostart }}';
+var latoend = '{{ $latoend }}';
+var lato = '{{ request()->lato }}';
 </script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection

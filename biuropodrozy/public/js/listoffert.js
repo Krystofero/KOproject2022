@@ -12,6 +12,14 @@ $(document).ready(function() {
         $('#allinclusive').prop('checked', true);
         $('#filters').trigger('input');
     }
+    if (lato == 1) {
+        console.log("mam");
+        console.log(latostart);
+        console.log(latoend);
+        $('#startdate').val(latostart);
+        $('#enddate').val(latoend);
+        $('#filters').trigger('input');
+    }
 });
 
 
