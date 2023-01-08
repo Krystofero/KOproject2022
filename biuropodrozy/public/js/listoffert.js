@@ -4,6 +4,10 @@ $(document).ready(function() {
         $('#promotion').prop('checked', true);
         $('#filters').trigger('input');
     }
+    if (lastminute == 1) {
+        $('#lastminute').prop('checked', true);
+        $('#filters').trigger('input');
+    }
     
 });
 

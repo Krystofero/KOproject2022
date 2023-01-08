@@ -58,6 +58,7 @@ class OffertController extends Controller
             ->get();
 
             $promotion = request()->promotion;
+            $lastminute = request()->lastminute;
             // dd($promotion);
 
             return view('offerts.list',[ 
@@ -66,7 +67,8 @@ class OffertController extends Controller
                 'cities' => $cities,
                 'countries' => $countries,
                 'regions' => $regions,
-                'promotion' => $promotion
+                'promotion' => $promotion,
+                'lastminute' => $lastminute
             ]);
             
     }

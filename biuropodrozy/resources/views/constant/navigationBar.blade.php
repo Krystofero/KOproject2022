@@ -18,7 +18,7 @@
                         <a class="nav-link" href="{{ route('offerts.index', ['promotion' => 1]) }}" id="promotion-link"><i class="fas fa-percent"></i>&nbspPromocje</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" ><i class="fas fa-clock"></i>&nbspLast minute</a>
+                        <a class="nav-link" href="{{ route('offerts.index', ['lastminute' => 1]) }}"><i class="fas fa-clock"></i>&nbspLast minute</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" ><i class="fas fa-wine-glass"></i>&nbspAll inclusive</a>

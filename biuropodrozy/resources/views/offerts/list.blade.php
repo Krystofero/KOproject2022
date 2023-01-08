@@ -84,13 +84,20 @@
                 <label for="enddate">Data końcowa:</label>
                 <input type="date" class="form-control" id="enddate">
             </div>
+            <div class="form-check">
+                <input
+                @if(request()->promotion == 1)
+                    checked
+                @endif
+                 type="checkbox" class="form-check-input" id="promotion" value="promotion" onchange="enableInput('promotion','promo')">
+                <label class="form-check-label" for="promotion">Promocja</label>
+            </div>
             <div class="form-group">
                 <label for="promo">% Promocji:</label>
                 <input type="range" min="0" max="100" step="1" value="0" class="form-control" id="promo" 
                 @if(request()->promotion != 1)
                     disabled
-                @endif
-                >
+                @endif>
                 <span id="promo-value">0 - 100 %</span>
                 </input>
                 {{-- <select class="form-control" id="promo" disabled>
@@ -103,16 +110,11 @@
                 </select> --}}
             </div>
             <div class="form-check">
-                <input
-                @if(request()->promotion == 1)
-                    checked
-                @endif
-                 type="checkbox" class="form-check-input" id="promotion" value="promotion" onchange="enableInput('promotion','promo')">
-                <label class="form-check-label" for="promotion">Promocja</label>
-            </div>
-            <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="lastminute" value="lastminute">
-                <label class="form-check-label" for="lastminute">Last Minute</label>
+                <label class="form-check-label" for="lastminute"
+                @if(request()->promotion != 1)
+                    disabled
+                @endif>Last Minute</label>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="allinclusive" value="allinclusive">
@@ -294,6 +296,9 @@
 
     
 </div>
-<script>var promotion = '{{ request()->promotion }}';</script>
+<script>
+var promotion = '{{ request()->promotion }}';
+var lastminute = '{{ request()->lastminute }}';
+</script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection
