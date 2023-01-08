@@ -30,9 +30,9 @@
                                 @enderror    
                             </div>
                             <div class="col-md-4">
-                                <label for="price">Cena*</label>
+                                <label for="price">Cena za osobę*</label>
                                 <input name="price" id="price" class="form-control" onchange="calculateValue('promo','promotionprice')" value="{{ old('price') }}" type="number" min="0" step=".01" aria-describedby="priceHelp" placeholder="Wprowadź cenę" autocomplete="price" required autofocus></input>
-                                <small id="priceHelp" class="form-text text-muted">Wprowadź cenę oferty.</small>
+                                <small id="priceHelp" class="form-text text-muted">Wprowadź cenę oferty za osobę.</small>
 
                                 @error('price')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -40,9 +40,9 @@
                             </div>  
                         </div>
                         <div class="form-group">
-                            <label for="description">Opis</label>
-                            <textarea name="description" id="description" class="form-control" type="text" aria-describedby="descriptionHelp" placeholder="Wprowadź opis" autocomplete="description" autofocus>{{ old('description') }}</textarea>
-                            <small id="descriptionHelp" class="form-text text-muted">Wprowadź główny opis widoczny przy ofercie.</small>
+                            <label for="description">Krótki opis</label>
+                            <textarea maxlength="500" name="description" id="description" class="form-control" type="text" aria-describedby="descriptionHelp" placeholder="Wprowadź krótki opis" autocomplete="description" autofocus>{{ old('description') }}</textarea>
+                            <small id="descriptionHelp" class="form-text text-muted">Krótki opis widoczny przy ofercie (max 500 znaków).</small>
 
                             @error('description')
                                 <small class="form-text text-danger">{{$message}}</small>
@@ -220,7 +220,7 @@
                             </div>
                             <div class="col-md-10">
                                 <label for="allindescription">Opis all inclusive</label>
-                                <textarea name="allindescription" id="allindescription" class="form-control" type="text" aria-describedby="allindescriptionHelp" placeholder="Wprowadź opis oferty all inclusive" autocomplete="allindescription" autofocus disabled>{{ old('allindescription') }}</textarea>
+                                <textarea maxlength="500" name="allindescription" id="allindescription" class="form-control" type="text" aria-describedby="allindescriptionHelp" placeholder="Wprowadź opis oferty all inclusive" autocomplete="allindescription" autofocus disabled>{{ old('allindescription') }}</textarea>
                                 <small id="allindescriptionHelp" class="form-text text-muted"></small>
 
                                 @error('allindescription')
@@ -231,8 +231,8 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6">
                                 <label for="placedescription">Opis miejsca pobytu</label>
-                                <textarea name="placedescription" id="placedescription" class="form-control" type="text" aria-describedby="placedescriptionHelp" placeholder="Wprowadź opis miejsca pobytu" autocomplete="placedescription" autofocus>{{ old('placedescription') }}</textarea>
-                                <small id="placedescriptionHelp" class="form-text text-muted"></small>
+                                <textarea maxlength="500" name="placedescription" id="placedescription" class="form-control" type="text" aria-describedby="placedescriptionHelp" placeholder="Wprowadź opis miejsca pobytu" autocomplete="placedescription" autofocus>{{ old('placedescription') }}</textarea>
+                                <small id="placedescriptionHelp" class="form-text text-muted">(max 500 znaków)</small>
 
                                 @error('placedescription')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -240,8 +240,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="pricedescription">W cenie</label>
-                                <textarea name="pricedescription" id="pricedescription" class="form-control" type="text" aria-describedby="pricedescriptionHelp" placeholder="Wprowadź co jest w cenie podróży" autocomplete="pricedescription" autofocus>{{ old('pricedescription') }}</textarea>
-                                <small id="pricedescriptionHelp" class="form-text text-muted">Wprowadź co wyświetlić w dziale "w cenie"</small>
+                                <textarea maxlength="500" name="pricedescription" id="pricedescription" class="form-control" type="text" aria-describedby="pricedescriptionHelp" placeholder="Wprowadź co jest w cenie podróży" autocomplete="pricedescription" autofocus>{{ old('pricedescription') }}</textarea>
+                                <small id="pricedescriptionHelp" class="form-text text-muted">Wprowadź co wyświetlić w dziale "w cenie" (max 500 znaków)</small>
 
                                 @error('pricedescription')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -280,8 +280,8 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6">
                                 <label for="hoteldescription">Opis hotelu</label>
-                                <textarea name="hoteldescription" id="hoteldescription" class="form-control" type="text" aria-describedby="hoteldescriptionHelp" placeholder="Wprowadź opis hotelu" autocomplete="hoteldescription" autofocus>{{ old('hoteldescription') }}</textarea>
-                                <small id="hoteldescriptionHelp" class="form-text text-muted"></small>
+                                <textarea maxlength="500" name="hoteldescription" id="hoteldescription" class="form-control" type="text" aria-describedby="hoteldescriptionHelp" placeholder="Wprowadź opis hotelu" autocomplete="hoteldescription" autofocus>{{ old('hoteldescription') }}</textarea>
+                                <small id="hoteldescriptionHelp" class="form-text text-muted">(max 500 znaków)</small>
 
                                 @error('hoteldescription')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -289,8 +289,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="roomsdescription">Opis zakwaterowania</label>
-                                <textarea name="roomsdescription" id="roomsdescription" class="form-control" type="text" aria-describedby="roomsdescriptionHelp" placeholder="Wprowadź opis zakwaterowania" autocomplete="roomsdescription" autofocus>{{ old('roomsdescription') }}</textarea>
-                                <small id="roomsdescriptionHelp" class="form-text text-muted">Opis wyglądu pokojów, np. ile łóżek</small>
+                                <textarea maxlength="500" name="roomsdescription" id="roomsdescription" class="form-control" type="text" aria-describedby="roomsdescriptionHelp" placeholder="Wprowadź opis zakwaterowania" autocomplete="roomsdescription" autofocus>{{ old('roomsdescription') }}</textarea>
+                                <small id="roomsdescriptionHelp" class="form-text text-muted">Opis wyglądu pokojów, np. ile łóżek (max 500 znaków)</small>
 
                                 @error('roomsdescription')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -299,8 +299,8 @@
                         </div>
                         <div class="form-group">
                             <label for="disdescription">Opis przystosowania oferty do osób niepełnosprawnych</label>
-                            <textarea name="disdescription" id="disdescription" class="form-control" type="text" aria-describedby="disdescriptionHelp" placeholder="Wprowadź opis" autocomplete="disdescription" autofocus>{{ old('disdescription') }}</textarea>
-                            <small id="disdescriptionHelp" class="form-text text-muted"></small>
+                            <textarea maxlength="500" name="disdescription" id="disdescription" class="form-control" type="text" aria-describedby="disdescriptionHelp" placeholder="Wprowadź opis" autocomplete="disdescription" autofocus>{{ old('disdescription') }}</textarea>
+                            <small id="disdescriptionHelp" class="form-text text-muted">(max 500 znaków)</small>
 
                             @error('disdescription')
                                 <small class="form-text text-danger">{{$message}}</small>

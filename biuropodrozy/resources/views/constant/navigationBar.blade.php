@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <!-- Logo -->
-        {{-- <img src="{{URL::asset('/image/Logo.png')}}" width="45" height="40"> --}}
+        {{-- <img src="{{URL::asset('img/smak-wakacji-logo1.svg')}}" width="45" height="40"> --}}
         <a class="navbar-brand logo" href="{{url('')}}"><i class="fas fa-plane"></i>&nbsp;Smak Wakacji&nbsp;<i class="fas fa-plane"></i></a>
         {{-- Responsive button --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -11,6 +11,21 @@
         <div class="nav-item collapse navbar-collapse menu" id="navbarSupportedContent">
            <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('offerts.index') }}"><i class="fas fa-map"></i>&nbspWczasy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('offerts.index', ['promotion' => 1]) }}" id="promotion-link"><i class="fas fa-percent"></i>&nbspPromocje</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ><i class="fas fa-clock"></i>&nbspLast minute</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ><i class="fas fa-wine-glass"></i>&nbspAll inclusive</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ><i class="fas fa-sun"></i>&nbspLATO 2023</a>
+                    </li>
                 @auth
                     {{-- @can('isClient')
                         <li class="nav-item">
@@ -96,4 +111,27 @@
             $(this).find('.dropdown-menu').first().stop(true, true).slideUp(200);
         });
     });
+
+    // $('#promotion-link').click(function(e) {
+    //     e.preventDefault();
+    //     var url = $(this).attr('href');
+    //     $('#promotion').prop('checked', true);
+    //     $('#filters').trigger('input');
+    //     // setTimeout(function() {
+    //     //     window.location.href = url;
+    //     // }, 500);
+    // });
+
+    // $('#promotion-link').click(function(e) {
+    //     e.preventDefault();
+    //     var url = $(this).attr('href');
+    //     var promotion = $(this).data('promotion');
+    //     url += '?promotion=' + promotion;
+    //     $('#promotion').prop('checked', true);
+    //     $('#filters').trigger('input');
+    //     setTimeout(function() {
+    //         window.location.href = url;
+    //     }, 500);
+    // });
+
 </script>

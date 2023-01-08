@@ -19,7 +19,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('user_id');
                 $table->string('country');
                 $table->string('title');
-                $table->string('description')->nullable();
+                $table->string('description', 500)->nullable();
                 $table->date('startdateturnus');
                 $table->date('enddateturnus');
                 $table->decimal('price', 10, 2);
@@ -33,14 +33,14 @@ return new class extends Migration
                 $table->string('region');
                 $table->string('city');
                 $table->boolean('allinclusive')->default(false);
-                $table->string('allindescription')->nullable(); //opis all inclusive
-                $table->string('placedescription')->nullable(); //opis położenia
-                $table->string('pricedescription')->nullable(); //co w cenie
-                $table->string('hoteldescription')->nullable(); //opis hotelu
-                $table->string('roomsdescription')->nullable(); //opis pokoi
+                $table->string('allindescription', 500)->nullable(); //opis all inclusive
+                $table->string('placedescription', 500)->nullable(); //opis położenia
+                $table->string('pricedescription', 500)->nullable(); //co w cenie
+                $table->string('hoteldescription', 500)->nullable(); //opis hotelu
+                $table->string('roomsdescription', 500)->nullable(); //opis pokoi
                 $table->integer('persnum'); //ile osób
                 $table->integer('nights'); //ile nocy
-                $table->string('disdescription')->nullable(); //udogodnienia dla niepełnosprawnych
+                $table->string('disdescription', 500)->nullable(); //udogodnienia dla niepełnosprawnych
                 $table->string('hemail');
                 $table->unsignedBigInteger('htel');
                 // $table->enum('status', ['Nie rozpoczęto','W trakcie','Zakończono'])->default('Nie rozpoczęto');

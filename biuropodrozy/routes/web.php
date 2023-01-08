@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ModeratorOffertController;
+use App\Http\Controllers\OffertController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,12 @@ Route::get('/infocookies', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get('/offerts/index/{view}', [OffertController::class, 'index']);
+// Route::get('/offerts/show/{view}', [OffertController::class, 'show']);
+Route::resource('offerts', OffertController::class)->only([
+    'index', 'show'
+]); 
+
 Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych użytkowników
     Route::middleware(['can:isAdmin'])->group(function() { #grupa Administrator
         Route::resource('users', UsersController::class)->only([
@@ -36,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych 
     Route::middleware(['can:isModer'])->group(function() { #grupa Moderator
         Route::get('/offertsModerator/create', [ModeratorOffertController::class, 'create']);
         Route::get('/offertsModerator/{offert}', [ModeratorOffertController::class, 'show']);
-        Route::get('/offertsModerator/stats/{offert}', [ModeratorOffertController::class, 'stats']);
+        // Route::get('/offertsModerator/stats/{offert}', [ModeratorOffertController::class, 'stats']);
         Route::delete('/offertsModerator/{offert}', [ModeratorOffertController::class, 'destroy']);
 
 

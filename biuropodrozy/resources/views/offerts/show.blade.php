@@ -6,20 +6,6 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header h3 text-center">{{ __('Podgląd oferty:') }} {{ $offert->title }}</div>
-                {{-- <div class="informations">
-                    <ul class="nav nav-tabs" id="infotabs">
-                        <li class="active">
-                          <a data-toggle="tab">Ogólne</a> 
-                        </li>
-                        <li>
-                            <a data-toggle="tab">Opis oferty</a> 
-                        </li>
-                        <li>
-                            <a data-toggle="tab">Zdjęcia</a> 
-                        </li>
-                    </ul>
-                </div> --}}
-
                 <div class="form-group row upperlinks">
                     {{-- tutaj przekierowanie do filtrowania ofert z tym krajem --}}
                     <div class="col-md-4">
@@ -48,7 +34,6 @@
                             @endif
                         @endforeach
 
-                        
                     </div>
 
                     <div class="rightbox">
@@ -63,12 +48,12 @@
                                 @if($offert->promotion == false)
                                     Cena: 
                                     <div class="pricing">
-                                        {{ $offert->price }} <sup>zł</sup>
+                                        {{ $offert->price }} <sup>zł/os</sup>
                                     </div> 
                                 @else
                                     Cena: 
                                     <div class="pricing">
-                                        <del>{{ $offert->price }} zł</del>
+                                        <del>{{ $offert->price }} zł/os</del>
                                     </div>
                                 @endif
                                 @if($offert->promotion == true && $offert->promotionprice != null)
@@ -77,13 +62,13 @@
                                     </div> 
                                     Cena promocyjna:
                                     <div class="pricing">
-                                        {{ $offert->promotionprice }} <sup>zł</sup>
+                                        {{ $offert->promotionprice }} <sup>zł/os</sup>
                                     </div> 
                                 @endif
                                 @if($offert->insuranceprice != null)
                                     Cena z dodatkowym ubezpieczeniem:
                                     <div class="pricing">
-                                        {{ $offert->insuranceprice }} <sup>zł</sup>
+                                        {{ $offert->insuranceprice }} <sup>zł/os</sup>
                                     </div> 
                                 @endif
                                 <div>
@@ -102,6 +87,12 @@
                                     {{ $offert->persnum }} osoby
                                 @endif
                                 </div>
+                                @if($offert->allinclusive == true)
+                                    <div class="allin">
+                                        <i class="fas fa-wine-glass"></i>
+                                        All inclusive
+                                    </div>
+                                @endif
                                 <div class="buybutton">
                                     <button class="btn2 btn-primary">Kup teraz</button>
                                 </div> 

@@ -64,7 +64,7 @@ class ModeratorOffertController extends Controller
         $data = request()->validate([
             'title' => 'required|String|max:150',
             'country' => 'required|String|max:100',
-            'description' => 'nullable|String|max:255',
+            'description' => 'nullable|String|max:500',
             'startdateturnus' => 'required|date|before_or_equal:enddateturnus|after_or_equal:enddate',
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
             'price' => 'required|numeric|min:3|gt:0',
@@ -81,15 +81,15 @@ class ModeratorOffertController extends Controller
             'region' => 'required|String|max:100',
             'city' => 'required|String|max:100',
             // 'allinclusive' => 'nullable|boolean',
-            'allindescription' => 'nullable|String|max:255',
-            'placedescription' => 'nullable|String|max:255',
-            'pricedescription' => 'nullable|String|max:255',
+            'allindescription' => 'nullable|String|max:500',
+            'placedescription' => 'nullable|String|max:500',
+            'pricedescription' => 'nullable|String|max:500',
             'persnum' => 'required|numeric|gt:0',
             'hemail' => 'required|String|email|max:255',
             'htel' => 'required|numeric|digits_between:9,15',
-            'hoteldescription' => 'nullable|String|max:255',
-            'roomsdescription' => 'nullable|String|max:255',
-            'disdescription' => 'nullable|String|max:255'
+            'hoteldescription' => 'nullable|String|max:500',
+            'roomsdescription' => 'nullable|String|max:500',
+            'disdescription' => 'nullable|String|max:500'
         ]);
         if($request->has('lastminute')){
             //Checkbox checked
@@ -105,6 +105,7 @@ class ModeratorOffertController extends Controller
         }else{
             //Checkbox not checked
             $data['promotion'] = false;
+            $data['promo'] = 0;
         }
 
         if($request->has('allinclusive')){
@@ -211,7 +212,7 @@ class ModeratorOffertController extends Controller
         $request->validate([
             'title' => 'required|String|max:150',
             'country' => 'required|String|max:100',
-            'description' => 'nullable|String|max:255',
+            'description' => 'nullable|String|max:500',
             'startdateturnus' => 'required|date|before_or_equal:enddateturnus|after_or_equal:enddate',
             'enddateturnus' => 'required|date|after_or_equal:startdateturnus|after_or_equal:enddate',
             'price' => 'required|numeric|min:3|gt:0',
@@ -228,15 +229,15 @@ class ModeratorOffertController extends Controller
             'region' => 'required|String|max:100',
             'city' => 'required|String|max:100',
             // 'allinclusive' => 'nullable|boolean',
-            'allindescription' => 'nullable|String|max:255',
-            'placedescription' => 'nullable|String|max:255',
-            'pricedescription' => 'nullable|String|max:255',
+            'allindescription' => 'nullable|String|max:500',
+            'placedescription' => 'nullable|String|max:500',
+            'pricedescription' => 'nullable|String|max:500',
             'persnum' => 'required|numeric|gt:0',
-            'hemail' => 'required|String|email|max:255',
+            'hemail' => 'required|String|email|max:500',
             'htel' => 'required|numeric|digits_between:9,15',
-            'hoteldescription' => 'nullable|String|max:255',
-            'roomsdescription' => 'nullable|String|max:255',
-            'disdescription' => 'nullable|String|max:255'
+            'hoteldescription' => 'nullable|String|max:500',
+            'roomsdescription' => 'nullable|String|max:500',
+            'disdescription' => 'nullable|String|max:500'
         ]);
         if($request->has('lastminute')){
             //Checkbox checked
@@ -252,6 +253,7 @@ class ModeratorOffertController extends Controller
         }else{
             //Checkbox not checked
             $request['promotion'] = false;
+            $request['promo'] = 0;
         }
 
         if($request->has('allinclusive')){
