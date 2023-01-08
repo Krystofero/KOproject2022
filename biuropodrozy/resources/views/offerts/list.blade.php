@@ -118,7 +118,10 @@
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="allinclusive" value="allinclusive">
-                <label class="form-check-label" for="allinclusive">All Inclusive</label>
+                <label class="form-check-label" for="allinclusive"
+                @if(request()->allinclusive != 1)
+                    disabled
+                @endif>All Inclusive</label>
             </div>
             {{-- <button type="submit" class="btn btn-primary">Filtruj</button> --}}
         </form>
@@ -299,6 +302,7 @@
 <script>
 var promotion = '{{ request()->promotion }}';
 var lastminute = '{{ request()->lastminute }}';
+var allinclusive = '{{ request()->allinclusive }}';
 </script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection

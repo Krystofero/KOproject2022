@@ -59,6 +59,7 @@ class OffertController extends Controller
 
             $promotion = request()->promotion;
             $lastminute = request()->lastminute;
+            $allinclusive = request()->allinclusive;
             // dd($promotion);
 
             return view('offerts.list',[ 

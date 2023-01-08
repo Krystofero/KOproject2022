@@ -8,7 +8,10 @@ $(document).ready(function() {
         $('#lastminute').prop('checked', true);
         $('#filters').trigger('input');
     }
-    
+    if (allinclusive == 1) {
+        $('#allinclusive').prop('checked', true);
+        $('#filters').trigger('input');
+    }
 });
 
 
