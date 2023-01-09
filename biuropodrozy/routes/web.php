@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModeratorOrderController;
 use App\Http\Controllers\ModeratorOffertController;
 use App\Http\Controllers\OffertController;
 use App\Http\Controllers\UsersController;
@@ -56,9 +57,14 @@ Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych 
         // Route::get('/offertsModerator/stats/{offert}', [ModeratorOffertController::class, 'stats']);
         Route::delete('/offertsModerator/{offert}', [ModeratorOffertController::class, 'destroy']);
 
+        // Route::get('/offertsModerator/stats', 'App\Http\Controllers\ModeratorOffertController@stats')->name('offertsModerator.stats');
 
         Route::resource('offertsModerator', ModeratorOffertController::class)->only([ //oferty tworzone przez moderatora
             'index', 'store', 'edit', 'create', 'update', 'show', 'destroy'
+        ]); 
+
+        Route::resource('ordersModerator', ModeratorOrderController::class)->only([ //oferty tworzone przez moderatora
+            'index'
         ]); 
 
     });

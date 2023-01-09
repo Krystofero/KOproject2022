@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('offertsModerator.index') }}">Zarządzaj ofertami</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('ordersModerator.index') }}">Zamówienia</a>
+                        </li>
                     @endcan
                     @can('isAdmin')
                         <li class="nav-item dropdown" aria-labelledby="navbarDropdown">

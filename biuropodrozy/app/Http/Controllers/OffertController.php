@@ -44,6 +44,7 @@ class OffertController extends Controller
             // ->simplePaginate(10);
             // ->get();
             // dd($offerts);
+            // dd($offerts->links());
 
             $cities = DB::table('offerts')
                 ->select('city')

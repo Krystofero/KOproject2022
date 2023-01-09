@@ -24,7 +24,7 @@ class ModeratorOffertController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() //widok zarządzania ankietami moderatora
+    public function index() //widok zarządzania moderatora
     {
         if (!(Auth::user()) || Auth::user()->user_level != "Moderator"){
             return redirect('/');
@@ -174,16 +174,20 @@ class ModeratorOffertController extends Controller
         ]);
     }
 
-    /**
-     * Show the form with statistics of the specified resource.
-     *
-     * @param  Offert $offert
-     * @return View
-     */
-    public function stats(Offert $offert)
-    {
-        
-    }
+    // /**
+    //  * Show the form with statistics of the specified resource.
+    //  *
+    //  * @param  Offert $offert
+    //  * @return View
+    //  */
+    // public function stats()
+    // {
+    //     dd("mam");
+    //     return view('offerts.stats', [
+    //         'offerts' => Offert::all(),
+    //         'orders' => Order::all()
+    //     ]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
