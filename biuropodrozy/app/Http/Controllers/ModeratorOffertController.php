@@ -313,7 +313,8 @@ class ModeratorOffertController extends Controller
         $new_insuranceprice = $request->all()['insuranceprice'];
         $new_region = $request->all()['region'];
         $new_city = $request->all()['city'];
-        $new_allindescription = $request->all()['allindescription'];
+        if($request->has('allindescription'))
+            $new_allindescription = $request->all()['allindescription'];
         $new_placedescription = $request->all()['placedescription'];
         $new_pricedescription = $request->all()['pricedescription'];
         $new_persnum = $request->all()['persnum'];
@@ -340,7 +341,8 @@ class ModeratorOffertController extends Controller
         $updatedoffert->insuranceprice = $new_insuranceprice;
         $updatedoffert->region = $new_region;
         $updatedoffert->city = $new_city;
-        $updatedoffert->allindescription = $new_allindescription;
+        if($request->has('allindescription'))
+            $updatedoffert->allindescription = $new_allindescription;
         $updatedoffert->placedescription = $new_placedescription;
         $updatedoffert->pricedescription = $new_pricedescription;
         $updatedoffert->persnum = $new_persnum;
