@@ -505,6 +505,14 @@ body{
     }
   }
 
+  @media (max-width: 1190px) {
+    @media (min-width: 768px) {
+      .card-body5{
+        width:170%;
+      }
+    }
+  }  
+
   // .leftbox {
   //   display: block;
   //       float:inline-start; 
