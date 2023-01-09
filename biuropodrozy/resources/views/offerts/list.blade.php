@@ -155,7 +155,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card-body">
+                        <div class="card-body5">
                             <h5 class="card-title tt">{{ $offert->title }}</h5>
                             <p class="card-text"><small>
                                 <div class="form-group row upperlinks">
@@ -211,7 +211,7 @@
     </div>
 
     <!-- Right Side: Ad -->
-    <div class="col-md-3  animated fadeInRight">
+    <div class="col-md-3 animated fadeInRight">
         <h3>Aktualności</h3>
         <div class="card mb-3" style="max-width: 300px;">
             <img src="img/reklama1.webp" class="card-img-top" alt="Ad">
