@@ -15,7 +15,10 @@
                 <select class="form-control" id="country">
                     <option value="">Wszystkie</option>
                     @foreach ($countries as $country)
-                        <option value="{{ $country->country }}">{{ $country->country }}</option>
+                        <option value="{{ $country->country }}" 
+                            @if($country->country == $ccountry)
+                                selected
+                            @endif>{{ $country->country }}</option>
                     @endforeach
                     {{-- <option value="Grecja">Grecja</option>
                     <option value="Włochy">Włochy</option>
@@ -160,7 +163,8 @@
                             <p class="card-text"><small>
                                 <div class="form-group row upperlinks">
                                     {{-- tutaj przekierowanie do filtrowania ofert z tym krajem --}}
-                                        {{ $offert->country }}
+                                    <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
+                                        {{-- {{ $offert->country }} --}}
                                     /
                                     {{-- tutaj przekierowanie --}}
                                         {{ $offert->region }}
@@ -314,6 +318,7 @@ var allinclusive = '{{ request()->allinclusive }}';
 var latostart = '{{ $latostart }}';
 var latoend = '{{ $latoend }}';
 var lato = '{{ request()->lato }}';
+var ccountry = '{{ request()->ccountry }}';
 </script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection

@@ -64,6 +64,7 @@ class OffertController extends Controller
             $lastminute = request()->lastminute;
             $allinclusive = request()->allinclusive;
             $lato = request()->lato;
+            $ccountry = request()->ccountry;
 
             $latostart = null;
             $latoend = null;
@@ -84,7 +85,8 @@ class OffertController extends Controller
                 'lastminute' => $lastminute,
                 'lato' => $lato,
                 'latostart' => $latostart,
-                'latoend' => $latoend
+                'latoend' => $latoend,
+                'ccountry' => $ccountry
             ]);
             
     }

@@ -17,6 +17,9 @@ $(document).ready(function() {
         $('#enddate').val(latoend);
         $('#filters').trigger('input');
     }
+    if (ccountry != null) {
+        $('#filters').trigger('input');
+    }
 });
 
 
