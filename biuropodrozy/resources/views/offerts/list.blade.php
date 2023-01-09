@@ -30,7 +30,10 @@
                 <select class="form-control" id="region">
                     <option value="">Wszystkie</option>
                     @foreach ($regions as $region)
-                        <option value="{{ $region->region }}">{{ $region->region }}</option>
+                        <option value="{{ $region->region }}"
+                            @if($region->region == $rregion)
+                                selected
+                            @endif>{{ $region->region }}</option>
                     @endforeach
                 </select>
             </div>
@@ -168,7 +171,8 @@
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
                                         {{-- {{ $offert->country }} --}}
                                     /
-                                        {{ $offert->region }}
+                                    <a class="nav-link2" href="{{ route('offerts.index', ['rregion' => $offert->region]) }}" id="region-link">{{ $offert->region }}</a>
+                                        {{-- {{ $offert->region }} --}}
                                     /
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccity' => $offert->city]) }}" id="city-link">{{ $offert->city }}</a>
                                         {{-- {{ $offert->city }} --}}
@@ -321,6 +325,7 @@ var latoend = '{{ $latoend }}';
 var lato = '{{ request()->lato }}';
 var ccountry = '{{ request()->ccountry }}';
 var ccity = '{{ request()->ccity }}';
+var rregion = '{{ request()->rregion }}';
 </script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection

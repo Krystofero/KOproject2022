@@ -23,6 +23,9 @@ $(document).ready(function() {
     if (ccity != null) {
         $('#filters').trigger('input');
     }
+    if (rregion != null) {
+        $('#filters').trigger('input');
+    }
 });
 
 

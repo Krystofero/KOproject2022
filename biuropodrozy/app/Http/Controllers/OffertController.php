@@ -66,6 +66,7 @@ class OffertController extends Controller
             $lato = request()->lato;
             $ccountry = request()->ccountry;
             $ccity = request()->ccity;
+            $rregion = request()->rregion;
 
             $latostart = null;
             $latoend = null;
@@ -88,7 +89,8 @@ class OffertController extends Controller
                 'latostart' => $latostart,
                 'latoend' => $latoend,
                 'ccountry' => $ccountry,
-                'ccity' => $ccity
+                'ccity' => $ccity,
+                'rregion' => $rregion
             ]);
             
     }
