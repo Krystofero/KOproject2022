@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('firstname');        
             $table->string('lastname');
-            $table->string('email')->unique();
-            $table->unsignedBigInteger('tel')->unique();
+            $table->string('email');
+            $table->unsignedBigInteger('tel');
             $table->boolean('insurance')->default(false);
             $table->timestamps();
 

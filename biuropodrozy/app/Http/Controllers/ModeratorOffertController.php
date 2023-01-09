@@ -89,8 +89,10 @@ class ModeratorOffertController extends Controller
             'htel' => 'required|numeric|digits_between:9,15',
             'hoteldescription' => 'nullable|String|max:500',
             'roomsdescription' => 'nullable|String|max:500',
-            'disdescription' => 'nullable|String|max:500'
+            'disdescription' => 'nullable|String|max:500',
+            'amount' => 'required|numeric|gt:0|lt:10001'
         ]);
+        // dd($data['amount']);
         if($request->has('lastminute')){
             //Checkbox checked
             $data['lastminute'] = true;
@@ -237,7 +239,8 @@ class ModeratorOffertController extends Controller
             'htel' => 'required|numeric|digits_between:9,15',
             'hoteldescription' => 'nullable|String|max:500',
             'roomsdescription' => 'nullable|String|max:500',
-            'disdescription' => 'nullable|String|max:500'
+            'disdescription' => 'nullable|String|max:500',
+            'amount' => 'required|numeric|gt:0|lt:10001'
         ]);
         if($request->has('lastminute')){
             //Checkbox checked
@@ -319,6 +322,7 @@ class ModeratorOffertController extends Controller
         $new_hoteldescription = $request->all()['hoteldescription'];
         $new_roomsdescription = $request->all()['roomsdescription'];
         $new_disdescription = $request->all()['disdescription'];
+        $new_amount = $request->all()['amount'];
 
         $updatedoffert = Offert::find($id);
 
@@ -345,6 +349,7 @@ class ModeratorOffertController extends Controller
         $updatedoffert->hoteldescription = $new_hoteldescription;
         $updatedoffert->roomsdescription = $new_roomsdescription;
         $updatedoffert->disdescription = $new_disdescription;
+        $updatedoffert->amount = $new_amount;
 
         $updatedoffert->save();
 

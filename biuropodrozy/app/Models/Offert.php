@@ -47,7 +47,8 @@ class Offert extends Model
         'htel',
         'hoteldescription',
         'roomsdescription',
-        'disdescription'
+        'disdescription',
+        'amount'
     ];
 
     // public function user()

@@ -268,14 +268,25 @@
                                 @enderror    
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="disdescription">Opis przystosowania oferty do osób niepełnosprawnych</label>
-                            <textarea maxlength="500" name="disdescription" id="disdescription" class="form-control" type="text" aria-describedby="disdescriptionHelp" placeholder="Wprowadź opis" autocomplete="disdescription" autofocus>{{$offert->disdescription}}</textarea>
-                            <small id="disdescriptionHelp" class="form-text text-muted">(max 500 znaków)</small>
+                        <div class="form-group row">
+                            <div class="col-md-10">
+                                <label for="disdescription">Opis przystosowania oferty do osób niepełnosprawnych</label>
+                                <textarea maxlength="500" name="disdescription" id="disdescription" class="form-control" type="text" aria-describedby="disdescriptionHelp" placeholder="Wprowadź opis" autocomplete="disdescription" autofocus>{{$offert->disdescription}}</textarea>
+                                <small id="disdescriptionHelp" class="form-text text-muted">(max 500 znaków)</small>
 
-                            @error('disdescription')
-                                <small class="form-text text-danger">{{$message}}</small>
-                            @enderror    
+                                @error('disdescription')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror    
+                            </div>
+                            <div class="col-md-2">
+                                <label for="amount">Ilość ofert:</label>
+                                <input type="number" min="0" max="10000" name="amount" class="form-control" id="amount" value="{{$offert->amount}}" aria-describedby="amountHelp" autocomplete="amount" autofocus required></input>
+                                <small id="amountHelp" class="form-text text-muted"></small>
+
+                                @error('amount')
+                                    <small class="form-text text-danger">{{$message}}</small>
+                                @enderror    
+                            </div>
                         </div>
                         <br>
                         @if($images->isEmpty())

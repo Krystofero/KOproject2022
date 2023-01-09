@@ -35,6 +35,7 @@ class OffertController extends Controller
 
             $offerts = Offert::where('startdate', '<=', $today)
             ->where('enddate', '>=', $today)
+            ->where('amount', '>', 0)
             ->join('images', function ($join) {
                 $join->on('images.offert_id', '=', 'offerts.id')
                     ->where('images.is_main', '=', true);
@@ -161,6 +162,10 @@ class OffertController extends Controller
         }
         // $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
         $order = Order::create($data);
+
+        $offert = Offert::where('id', '=', $data['offert_id'])->first();
+        $offert->amount -= 1;
+        $offert->save();
 
         return redirect()->route('offerts.index')->with('success', 'Offert bought successfully!'); //przekierowanie do widoku ofert
         // return view('offerts.index', [
