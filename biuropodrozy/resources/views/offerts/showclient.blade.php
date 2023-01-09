@@ -9,15 +9,18 @@
                 <div class="form-group row upperlinks">
                     {{-- tutaj przekierowanie do filtrowania ofert z tym krajem --}}
                     <div class="col-md-4">
-                        Kraj podróży: {{ $offert->country }}
+                        Kraj podróży: <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
+                        {{-- {{ $offert->country }} --}}
                     </div>
                     {{-- tutaj przekierowanie --}}
                     <div class="col-md-4">
-                        Region: {{ $offert->region }}
+                        Region: <a class="nav-link2" href="{{ route('offerts.index', ['rregion' => $offert->region]) }}" id="region-link">{{ $offert->region }}</a>
+                        {{-- {{ $offert->region }} --}}
                     </div>
                     {{-- tutaj przekierowanie --}}
                     <div class="col-md-4">
-                        Miasto: {{ $offert->city }}
+                        Miasto: <a class="nav-link2" href="{{ route('offerts.index', ['ccity' => $offert->city]) }}" id="city-link">{{ $offert->city }}</a>
+                        {{-- {{ $offert->city }} --}}
                     </div> 
                 </div>
                 <div class="boxes">
