@@ -232,7 +232,7 @@
                             <div class="col-md-5">
                                 <label for="hemail">Email hotelu*</label>
                                 <input name="hemail" id="hemail" class="form-control" value="{{$offert->hemail}}" type="email" aria-describedby="hemailHelp" autocomplete="hemail" autofocus required></input>
-                                <small id="hemailHelp" class="form-text text-muted">Wprowadź cenę promocyjną oferty.</small>
+                                <small id="hemailHelp" class="form-text text-muted">Wprowadź email hotelu.</small>
 
                                 @error('hemail')
                                     <small class="form-text text-danger">{{$message}}</small>
@@ -241,7 +241,7 @@
                             <div class="col-md-5">
                                 <label for="htel">Telefon hotelu*</label>
                                 <input name="htel" id="htel" class="form-control" value="{{$offert->htel}}" type="tel" maxlength="15" aria-describedby="htelHelp" autocomplete="htel" autofocus required></input>
-                                <small id="htelHelp" class="form-text text-muted">Wprowadź cenę oferty z dodatkowym ubezpieczeniem.</small>
+                                <small id="htelHelp" class="form-text text-muted">Wprowadź telefon hotelu.</small>
 
                                 @error('htel')
                                     <small class="form-text text-danger">{{$message}}</small>
