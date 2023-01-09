@@ -3,7 +3,7 @@
 @section('content')
 <div class="container2 row">
     <!-- Left Side: Browser and Filters -->
-    <div class="col-md-3 leftside">
+    <div class="col-md-3 leftside animated fadeInLeft">
         <h3>Wyszukaj oferty</h3>
         <form id="filters">
             <div class="form-group">
@@ -134,7 +134,7 @@
     </div>
 
     <!-- Middle: Offerts -->
-    <div class="col-md-6" id="offerts">
+    <div class="col-md-6 animated fadeInUp" id="offerts">
         <h3>Oto nasze oferty</h3>
         @foreach($offerts as $offert)
             <div class="card mb-3" style="max-width: 940px;"
@@ -198,7 +198,9 @@
                                 </div> 
                             @endif
                             <div class="buybutton">
-                                <button class="btn2 btn-primary">Zobacz</button>
+                                <a href="{{ route('offerts.show',  $offert->offert_id) }}">
+                                    <button class="btn2 btn-primary">Zobacz</button>
+                                </a>
                             </div> 
                         </div>
                     </div>
@@ -209,7 +211,7 @@
     </div>
 
     <!-- Right Side: Ad -->
-    <div class="col-md-3">
+    <div class="col-md-3  animated fadeInRight">
         <h3>Aktualności</h3>
         <div class="card mb-3" style="max-width: 300px;">
             <img src="img/reklama1.webp" class="card-img-top" alt="Ad">

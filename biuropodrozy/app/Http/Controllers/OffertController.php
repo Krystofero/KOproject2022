@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Offert;
+use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -87,7 +88,7 @@ class OffertController extends Controller
     }
 
     public function show(int $id)
-    {
+    {   
         // //// Lazy Eager Loading - ładowanie dynamiczne "z opóźnieniem"
         // $offert->load('offert.photos');
 
@@ -95,10 +96,78 @@ class OffertController extends Controller
 
         $offert = DB::table('offerts')->get()->where('id', $id)->first(); //znajduje pierwszy element w tabeli o podanym id
         $images = DB::table('images')->get()->where('offert_id', $id);
-        return view('offerts.show', [
+        return view('offerts.showclient', [
             'offert' => $offert,
             'images' => $images
         ]);
+    }
+
+    public function buy(int $id)
+    {
+        $offert = DB::table('offerts')->get()->where('id', $id)->first();
+        
+        if($offert->promotion == true && $offert->promotionprice != null){
+            $sumprice = $offert->promotionprice * $offert->persnum;
+        }
+        else{
+            $sumprice = $offert->price * $offert->persnum;
+        }
+
+        if($offert->insuranceprice != null){
+            $inssumprice = $offert->insuranceprice * $offert->persnum;
+        }
+        else{
+            $inssumprice = null;
+        }
+        
+        return view('offerts.buy', [
+            'offert' => $offert,
+            'sumprice' => $sumprice,
+            'inssumprice' => $inssumprice
+        ]);
+
+    }
+
+    /**
+     * Store in storage and save a newly created offert.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {   
+        $data = $request->validate([
+            'user_id' => 'required',
+            'offert_id' => 'required',
+            'firstname' => 'required|String|max:255',
+            'lastname' => 'required|String|max:255',
+            'email' => 'required|String|max:255',
+            'tel' => 'required|numeric|digits_between:9,15',
+            'price' => 'required|numeric|min:3|gt:0'
+        ]);
+        // if($request->has('basic')){
+        //     //Checkbox checked
+        //     $data['basic'] = true;
+        // }else{
+        //     //Checkbox not checked
+        //     $data['basic'] = false;
+        // }
+        if($request->has('insurance')){
+            //Checkbox checked
+            $data['insurance'] = true;
+        }else{
+            //Checkbox not checked
+            $data['insurance'] = false;
+        }
+        // $data['user_id'] = auth()->user()->id; //id użytkownika który utworzył ofertę
+        $order = Order::create($data);
+
+        return redirect()->route('offerts.index')->with('success', 'Offert bought successfully!'); //przekierowanie do widoku ofert
+        // return view('offerts.index', [
+        //     'offert' => $offert,
+        //     'sumprice' => $sumprice,
+        //     'inssumprice' => $inssumprice
+        // ]);
     }
 
 }

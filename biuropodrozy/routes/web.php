@@ -28,11 +28,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/offerts/index/{view}', [OffertController::class, 'index']);
 // Route::get('/offerts/show/{view}', [OffertController::class, 'show']);
-Route::resource('offerts', OffertController::class)->only([
-    'index', 'show'
-]); 
+
+
+// Route::resource('offerts', OffertController::class)->only([
+//     'index', 'show'
+// ]); 
+Route::get('/offerts', 'App\Http\Controllers\OffertController@index')->name('offerts.index');
+Route::get('/offerts/{id}', 'App\Http\Controllers\OffertController@show')->name('offerts.show');
+
 
 Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych użytkowników
+
+    Route::get('/offerts/buy/{id}', 'App\Http\Controllers\OffertController@buy')->name('offerts.buy');
+
+    Route::post('/offerts/store', 'App\Http\Controllers\OffertController@store')->name('offerts.store');
+
     Route::middleware(['can:isAdmin'])->group(function() { #grupa Administrator
         Route::resource('users', UsersController::class)->only([
             'index', 'edit', 'update', 'destroy'
