@@ -20,6 +20,9 @@ $(document).ready(function() {
     if (ccountry != null) {
         $('#filters').trigger('input');
     }
+    if (ccity != null) {
+        $('#filters').trigger('input');
+    }
 });
 
 

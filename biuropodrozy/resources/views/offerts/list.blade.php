@@ -39,7 +39,10 @@
                 <select class="form-control" id="city">
                     <option value="">Wszystkie</option>
                     @foreach ($cities as $city)
-                        <option value="{{ $city->city }}">{{ $city->city }}</option>
+                        <option value="{{ $city->city }}"
+                            @if($city->city == $ccity)
+                                selected
+                            @endif>{{ $city->city }}</option>
                     @endforeach
                     {{-- <option value="Paryż">Paryż</option>
                     <option value="Rzym">Rzym</option>
@@ -162,15 +165,13 @@
                             <h5 class="card-title tt">{{ $offert->title }}</h5>
                             <p class="card-text"><small>
                                 <div class="form-group row upperlinks">
-                                    {{-- tutaj przekierowanie do filtrowania ofert z tym krajem --}}
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
                                         {{-- {{ $offert->country }} --}}
                                     /
-                                    {{-- tutaj przekierowanie --}}
                                         {{ $offert->region }}
                                     /
-                                    {{-- tutaj przekierowanie --}}
-                                        {{ $offert->city }}
+                                    <a class="nav-link2" href="{{ route('offerts.index', ['ccity' => $offert->city]) }}" id="city-link">{{ $offert->city }}</a>
+                                        {{-- {{ $offert->city }} --}}
                                 </div>
                             </small></p>
                             @if($offert->persnum == 1)
@@ -319,6 +320,7 @@ var latostart = '{{ $latostart }}';
 var latoend = '{{ $latoend }}';
 var lato = '{{ request()->lato }}';
 var ccountry = '{{ request()->ccountry }}';
+var ccity = '{{ request()->ccity }}';
 </script>
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection
