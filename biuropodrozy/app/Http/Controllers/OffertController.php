@@ -41,6 +41,7 @@ class OffertController extends Controller
                     ->where('images.is_main', '=', true);
             })
             ->paginate(10);
+            // ->simplePaginate(10);
             // ->get();
             // dd($offerts);
 

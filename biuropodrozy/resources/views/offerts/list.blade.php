@@ -207,7 +207,7 @@
                 </div>
             </div>
         @endforeach
-        {{ $offerts->links() }}
+        <div class="row">{{ $offerts->links() }}</div>
     </div>
 
     <!-- Right Side: Ad -->
