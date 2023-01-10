@@ -86,30 +86,30 @@ $('#filters').on('keyup', function() {
         });
     });
 
-function openModal(id) {
-    var modal = document.getElementById("myModal"+id);
-    var img = document.getElementById(id);
-    var modalImg = document.getElementById("img"+id);
-    img.onclick = function(){
-        modal.style.display = "block";
-        modalImg.src = this.src;
-    }
+// function openModal(id) {
+//     var modal = document.getElementById("myModal"+id);
+//     var img = document.getElementById(id);
+//     var modalImg = document.getElementById("img"+id);
+//     img.onclick = function(){
+//         modal.style.display = "block";
+//         modalImg.src = this.src;
+//     }
 
-    closeModal(id);
-}
+//     closeModal(id);
+// }
 
- function closeModal(id) {
-       var modal = document.getElementById("myModal"+id);
-       var closeButton = document.getElementById("close"+id);
-       closeButton.onclick = function() {
-           modal.style.display = "none";
-       }
-       window.onclick = function(event) {
-           if (event.target == modal) {
-           modal.style.display = "none";
-           }
-       }
-   }
+//  function closeModal(id) {
+//        var modal = document.getElementById("myModal"+id);
+//        var closeButton = document.getElementById("close"+id);
+//        closeButton.onclick = function() {
+//            modal.style.display = "none";
+//        }
+//        window.onclick = function(event) {
+//            if (event.target == modal) {
+//            modal.style.display = "none";
+//            }
+//        }
+//    }
 
    function enableInput(el1,el2) {
     // Get the checkbox and the input field using their ids

@@ -158,10 +158,10 @@
                 <div class="row no-gutters">
                     <div class="col-md-5 photo">
                         <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}">
-                        <div id="myModal{{ $offert->id }}" class="modal">
+                        {{-- <div id="myModal{{ $offert->id }}" class="modal">
                             <span class="close" id="close{{ $offert->id }}">&times;</span>
                             <img class="modal-content" id="img{{ $offert->id }}">
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-md-4">
                         <div class="card-body5">
