@@ -28,11 +28,11 @@
             @foreach($orders as $order)
                 <tr>
                     {{-- <th scope="row">{{ $offert->title }}</th> --}}
-                    <td>{{ $order->price }}</td>
+                    <td>{{ $order->price }} zł</td>
                     <td>{{ $order->firstname }}</td>
                     <td>{{ $order->lastname }}</td>
                     <td>{{ $order->email }}</td>
-                    <td>{{ $order->tel }} zł</td>
+                    <td>{{ $order->tel }}</td>
                     <td>
                         @if($order->insurance == true)
                             TAK
