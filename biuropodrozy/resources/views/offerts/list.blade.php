@@ -8,7 +8,7 @@
         <form id="filters">
             <div class="form-group">
                 <label for="search">Szukaj:</label>
-                <input type="text" class="form-control" id="search">
+                <input type="text" class="form-control" id="search"></input>
             </div>
             <div class="form-group">
                 <label for="country">Kraj:</label>
@@ -56,8 +56,8 @@
             <div class="form-group">
                 <label for="price">Zakres cenowy za osobę:</label>
                 <input type="range" min="0" max="10000" step="100" value="0" class="form-control" id="price">
-                <span id="price-value">0 - 10000 zł</span>
                 </input>
+                <span id="price-value">0 - 10000 zł</span>
                 {{-- <select class="form-control" id="price">
                     <option value="">Wszystkie</option>
                     <option value="0-500">0zł - 500zł</option>
@@ -72,8 +72,8 @@
             <div class="form-group">
                 <label for="persnum">Ilość osób:</label>
                 <input type="range" min="0" max="10" step="1" value="0" class="form-control" id="persnum">
-                <span id="persnum-value">0 - 10 osób</span>
                 </input>
+                <span id="persnum-value">0 - 10 osób</span>
                 {{-- <select class="form-control" id="price">
                     <option value="">Wszystkie</option>
                     <option value="0-500">0zł - 500zł</option>
@@ -90,21 +90,21 @@
                 <input type="date" class="form-control" id="startdate"
                 @if(request()->lato == 1)
                     value='{{ $latostart }}'
-                @endif>
+                @endif></input>
             </div>
             <div class="form-group">
                 <label for="enddate">Data końcowa:</label>
                 <input type="date" class="form-control" id="enddate"
                 @if(request()->lato == 1)
                     value='{{ $latoend }}'
-                @endif>
+                @endif></input>
             </div>
             <div class="form-check">
                 <input
                 @if(request()->promotion == 1)
                     checked
                 @endif
-                 type="checkbox" class="form-check-input" id="promotion" value="promotion" onchange="enableInput('promotion','promo')">
+                 type="checkbox" class="form-check-input" id="promotion" value="promotion" onchange="enableInput('promotion','promo')"></input>
                 <label class="form-check-label" for="promotion">Promocja</label>
             </div>
             <div class="form-group">
@@ -113,8 +113,8 @@
                 @if(request()->promotion != 1)
                     disabled
                 @endif>
-                <span id="promo-value">0 - 100 %</span>
                 </input>
+                <span id="promo-value">0 - 100 %</span>
                 {{-- <select class="form-control" id="promo" disabled>
                     <option value="">Wszystkie</option>
                     <option value="1-5%">1-15%</option>
@@ -125,14 +125,14 @@
                 </select> --}}
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="lastminute" value="lastminute">
+                <input type="checkbox" class="form-check-input" id="lastminute" value="lastminute"></input>
                 <label class="form-check-label" for="lastminute"
                 @if(request()->promotion != 1)
                     disabled
                 @endif>Last Minute</label>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="allinclusive" value="allinclusive">
+                <input type="checkbox" class="form-check-input" id="allinclusive" value="allinclusive"></input>
                 <label class="form-check-label" for="allinclusive"
                 @if(request()->allinclusive != 1)
                     disabled
@@ -157,7 +157,7 @@
             data-promotion="{{ $offert->promotion }}" data-lastminute="{{ $offert->lastminute }}" data-allinclusive="{{ $offert->allinclusive }}">
                 <div class="row no-gutters">
                     <div class="col-md-5 photo">
-                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}">
+                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}"></img>
                         {{-- <div id="myModal{{ $offert->id }}" class="modal">
                             <span class="close" id="close{{ $offert->id }}">&times;</span>
                             <img class="modal-content" id="img{{ $offert->id }}">
@@ -223,7 +223,7 @@
     <div class="col-md-3 animated fadeInRight">
         <h3>Aktualności</h3>
         <div class="card mb-3" style="max-width: 300px;">
-            <img src="img/reklama1.webp" class="card-img-top" alt="Ad">
+            <img src="img/reklama1.webp" class="card-img-top" alt="Ad"></img>
             <div class="card-body">
                 <h5 class="card-title">Tańsze loty</h5>
                 <p class="card-text">Zrelaksuj się i nie czekaj już dłużej, bo nadszedł czas na tańsze loty!</p>
@@ -231,7 +231,7 @@
             </div>
         </div>
         <div class="card mb-3" style="max-width: 300px;">
-            <img src="img/smak-wakacji-logo1.svg" class="card-img-top" alt="Ad">
+            <img src="img/smak-wakacji-logo1.svg" class="card-img-top" alt="Ad"></img>
             <div class="card-body">
                 <h5 class="card-title">Nowy rozdział</h5>
                 <p class="card-text">Nowe otwarcie naszego biura w Warszawie.</p>
