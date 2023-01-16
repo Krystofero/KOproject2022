@@ -5,14 +5,15 @@
     <!-- Left Side: Browser and Filters -->
     <div class="col-md-3 leftside animated fadeInLeft">
         <h3>Wyszukaj oferty</h3>
-        <form id="filters">
+        <form id="filters" method="get">
+            @csrf
             <div class="form-group">
                 <label for="search">Szukaj:</label>
-                <input type="text" class="form-control" id="search"></input>
+                <input type="text" class="form-control" id="search" name="search" value="{{Request::get('search')}}"></input>
             </div>
             <div class="form-group">
                 <label for="country">Kraj:</label>
-                <select class="form-control" id="country">
+                <select class="form-control" id="country" name="country">
                     <option value="">Wszystkie</option>
                     @foreach ($countries as $country)
                         <option value="{{ $country->country }}" 
@@ -27,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="region">Region:</label>
-                <select class="form-control" id="region">
+                <select class="form-control" id="region" name="region">
                     <option value="">Wszystkie</option>
                     @foreach ($regions as $region)
                         <option value="{{ $region->region }}"
@@ -39,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="city">Miasto:</label>
-                <select class="form-control" id="city">
+                <select class="form-control" id="city" name="city">
                     <option value="">Wszystkie</option>
                     @foreach ($cities as $city)
                         <option value="{{ $city->city }}"
@@ -55,9 +56,19 @@
             
             <div class="form-group">
                 <label for="price">Zakres cenowy za osobę:</label>
-                <input type="range" min="0" max="10000" step="100" value="0" class="form-control" id="price">
+                <input type="range" min="1" max="10000" step="100" class="form-control" id="price" name="price"
+                @if($pprice != null)
+                    value = "{{Request::get('price')}}"
+                @else 
+                    value = "1"
+                @endif>
                 </input>
-                <span id="price-value">0 - 10000 zł</span>
+                @if($pprice!= null)
+                    <span id="price-value">{{Request::get('price')}} - 10000 zł</span>
+                    {{-- <span id="price-value">1 - {{Request::get('price')}} zł</span> --}}
+                @else
+                    <span id="price-value">1 - 10000 zł</span>
+                @endif
                 {{-- <select class="form-control" id="price">
                     <option value="">Wszystkie</option>
                     <option value="0-500">0zł - 500zł</option>
@@ -71,9 +82,18 @@
             </div>
             <div class="form-group">
                 <label for="persnum">Ilość osób:</label>
-                <input type="range" min="0" max="10" step="1" value="0" class="form-control" id="persnum">
+                <input type="range" min="1" max="10" step="1" class="form-control" id="persnum" name="persnum"
+                @if($ppersnum != null)
+                    value = "{{Request::get('persnum')}}"
+                @else 
+                    value = "1"
+                @endif>
                 </input>
-                <span id="persnum-value">0 - 10 osób</span>
+                @if($ppersnum != null)
+                    <span id="persnum-value">{{Request::get('persnum')}} - 10 osób</span>
+                @else
+                    <span id="persnum-value">1 - 10 osób</span>
+                @endif
                 {{-- <select class="form-control" id="price">
                     <option value="">Wszystkie</option>
                     <option value="0-500">0zł - 500zł</option>
@@ -87,15 +107,15 @@
             </div>
             <div class="form-group">
                 <label for="startdate">Data początkowa:</label>
-                <input type="date" class="form-control" id="startdate"
-                @if(request()->lato == 1)
+                <input type="date" class="form-control" id="startdate" name="startdate"
+                @if(request()->lato == 1 || request()->latostart != null)
                     value='{{ $latostart }}'
                 @endif></input>
             </div>
             <div class="form-group">
                 <label for="enddate">Data końcowa:</label>
-                <input type="date" class="form-control" id="enddate"
-                @if(request()->lato == 1)
+                <input type="date" class="form-control" id="enddate" name="enddate"
+                @if(request()->lato == 1 || request()->latoend != null)
                     value='{{ $latoend }}'
                 @endif></input>
             </div>
@@ -104,17 +124,26 @@
                 @if(request()->promotion == 1)
                     checked
                 @endif
-                 type="checkbox" class="form-check-input" id="promotion" value="promotion" onchange="enableInput('promotion','promo')"></input>
+                 type="checkbox" class="form-check-input" id="promotion" name="promotion" onchange="enableInput('promotion','promo')"
+                 @if(request()->promotion)
+                    checked
+                 @endif></input>
                 <label class="form-check-label" for="promotion">Promocja</label>
             </div>
             <div class="form-group">
                 <label for="promo">% Promocji:</label>
-                <input type="range" min="0" max="100" step="1" value="0" class="form-control" id="promo" 
+                <input type="range" min="1" max="100" step="1"  class="form-control" id="promo" name="promo" 
                 @if(request()->promotion != 1)
-                    disabled
+                    disabled value="0"
+                @else
+                    value = "{{Request::get('promo')}}"
                 @endif>
                 </input>
-                <span id="promo-value">0 - 100 %</span>
+                @if($ppromo != null)
+                    <span id="promo-value">{{Request::get('promo')}} - 100 %</span>
+                @else
+                    <span id="promo-value">1 - 100 %</span>
+                @endif
                 {{-- <select class="form-control" id="promo" disabled>
                     <option value="">Wszystkie</option>
                     <option value="1-5%">1-15%</option>
@@ -125,25 +154,27 @@
                 </select> --}}
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="lastminute" value="lastminute"></input>
-                <label class="form-check-label" for="lastminute"
-                @if(request()->promotion != 1)
-                    disabled
-                @endif>Last Minute</label>
+                <input type="checkbox" class="form-check-input" id="lastminute" name="lastminute"
+                @if(request()->lastminute)
+                    checked
+                @endif>
+                </input>
+                <label class="form-check-label" for="lastminute">Last Minute</label>
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="allinclusive" value="allinclusive"></input>
-                <label class="form-check-label" for="allinclusive"
-                @if(request()->allinclusive != 1)
-                    disabled
-                @endif>All Inclusive</label>
+                <input type="checkbox" class="form-check-input" id="allinclusive" name="allinclusive"
+                @if(request()->allinclusive)
+                    checked
+                @endif></input>
+                <label class="form-check-label" for="allinclusive">All Inclusive</label>
             </div>
-            {{-- <button type="submit" class="btn btn-primary">Filtruj</button> --}}
+            <button type="submit" class="btn btn-primary">Szukaj</button>
         </form>
     </div>
 
     <!-- Middle: Offerts -->
     <div class="col-md-6 animated fadeInUp" id="offerts">
+    @if(count($offerts) > 0)
         <h3>Oto nasze oferty</h3>
         @foreach($offerts as $offert)
             <div class="card mb-3" style="max-width: 940px;"
@@ -217,6 +248,10 @@
             </div>
         @endforeach
         <div class="row">{{ $offerts->links() }}</div>
+        <div class="row">Pokazuję od {{$offerts->firstItem()}} do {{$offerts->lastItem()}} ofert z {{$offerts->total()}}</div>
+        @else
+            <p>Brak ofert spełniających podane kryteria.</p>
+        @endif
     </div>
 
     <!-- Right Side: Ad -->
@@ -316,16 +351,19 @@
 
     
 </div>
-<script>
-var promotion = '{{ request()->promotion }}';
-var lastminute = '{{ request()->lastminute }}';
-var allinclusive = '{{ request()->allinclusive }}';
-var latostart = '{{ $latostart }}';
-var latoend = '{{ $latoend }}';
-var lato = '{{ request()->lato }}';
-var ccountry = '{{ request()->ccountry }}';
-var ccity = '{{ request()->ccity }}';
-var rregion = '{{ request()->rregion }}';
-</script>
+{{-- <script>
+// var promotion = '{{ request()->promotion }}';
+// var lastminute = '{{ request()->lastminute }}';
+// var allinclusive = '{{ request()->allinclusive }}';
+// var latostart = '{{ $latostart }}';
+// var latoend = '{{ $latoend }}';
+// var lato = '{{ request()->lato }}';
+// var ccountry = '{{ request()->ccountry }}';
+// var ccity = '{{ request()->ccity }}';
+// var rregion = '{{ request()->rregion }}';
+// var ppersnum = '{{Request::get('persnum')}}';
+// var ppersnum = '{{ request()->persnum }}';
+// var ppromo = '{{ request()->ppromo }}';
+</script> --}}
 <script src="{{asset('/js/listoffert.js')}}"></script>
 @endsection

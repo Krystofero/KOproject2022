@@ -20,27 +20,27 @@ class OffertController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index() //widok z publicznymi ofertami
+    public function index(Request $request) //widok z publicznymi ofertami
     {       
+        // $validatedData = $request->validate([
+        //     'search' => 'string|max:255',
+        //     'region' => 'string|in:north,south,east,west',
+        //     'country' => 'string|in:usa,canada,mexico',
+        //     // Add more validation rules for the other filters
+        // ]);
+
+
             $today = Carbon::now();
 
-            // $offerts = DB::table('offerts')
+            // $offerts = Offert::where('startdate', '<=', $today)
+            // ->where('enddate', '>=', $today)
+            // ->where('amount', '>', 0)
             // ->join('images', function ($join) {
             //     $join->on('images.offert_id', '=', 'offerts.id')
             //         ->where('images.is_main', '=', true);
             // })
-            // ->where('startdate', '<=', $today)
-            // ->where('enddate', '>=', $today)
-            // ->get();
+            // ->paginate(10);
 
-            $offerts = Offert::where('startdate', '<=', $today)
-            ->where('enddate', '>=', $today)
-            ->where('amount', '>', 0)
-            ->join('images', function ($join) {
-                $join->on('images.offert_id', '=', 'offerts.id')
-                    ->where('images.is_main', '=', true);
-            })
-            ->paginate(10);
             // ->simplePaginate(10);
             // ->get();
             // dd($offerts);
@@ -61,38 +61,202 @@ class OffertController extends Controller
             ->distinct()
             ->get();
 
-            $promotion = request()->promotion;
-            $lastminute = request()->lastminute;
-            $allinclusive = request()->allinclusive;
-            $lato = request()->lato;
-            $ccountry = request()->ccountry;
-            $ccity = request()->ccity;
-            $rregion = request()->rregion;
-
+            $lato = null;
             $latostart = null;
             $latoend = null;
+            $ccountry = null;
+            $ccity = null;
+            $rregion = null;
+            $ppersnum = null;
+            $pprice = null;
+            $ppromo = null;
 
-            if($lato == 1){
-                $latostart = '2023-06-01';
-                $latoend = '2023-10-01';
+            if ($request->ajax()) {
+
+                $offerts = Offert::query();
+                //Requesty z filrowania i wyszukiwarki
+                if ($request->has('search') && !empty($request->input('search'))) {
+                    // $offerts->where('country', 'like', '%' . $request->input('search') . '%')
+                    // ->orWhere('city', 'like', '%' . $request->input('search') . '%')
+                    // ->orWhere('region', 'like', '%' . $request->input('search') . '%')
+                    // ->orWhere('title', 'like', '%' . $request->input('search') . '%'); 
+                    $req = $request->input('search');
+                    $offerts->where(function ($query) use ($req) {
+                        $query->where('country', 'like', '%' . $req . '%')
+                            ->orWhere('city', 'like', '%' . $req . '%')
+                            ->orWhere('region', 'like', '%' . $req . '%')
+                            ->orWhere('title', 'like', '%' . $req . '%');
+                    }); 
+                }
+
+                if ($request->has('country') && !empty($request->input('country'))) {
+                    $offerts->where('country', $request->input('country'));
+                    $ccountry = $request->input('country');
+                }
+
+                if ($request->has('region') && !empty($request->input('region'))) {
+                    $offerts->where('region', $request->input('region'));
+                    $rregion = $request->input('region');
+                }
+
+                if ($request->has('city') && !empty($request->input('city'))) {
+                    $offerts->where('city', $request->input('city'));
+                    $ccity = $request->input('city');
+                }
+
+                if ($request->has('price') && !empty($request->input('price'))) {
+                    $req = $request->input('price');
+                    $offerts->where(function ($query) use ($req) {
+                        $query->whereBetween('price', [$req, 10000])
+                            ->whereNull('promotionprice')
+                            ->orwhereBetween('promotionprice', [$req, 10000]);
+                    }); 
+                    $pprice = $request->input('price');
+                }
+
+                if ($request->has('persnum') && !empty($request->input('persnum'))) {
+                    $offerts->whereBetween('persnum', [$request->input('persnum'), 10]);
+                    $ppersnum = $request->input('persnum');
+                }
+
+                if ($request->has('startdate') && !empty($request->input('startdate'))) {
+                    $offerts->where('startdateturnus', '>=', $request->input('startdate'));
+                    $latostart = $request->input('startdate');
+                }
+
+                if ($request->has('enddate') && !empty($request->input('enddate'))) {
+                    $offerts->where('enddateturnus', '<=', $request->input('enddate'));
+                    $latoend = $request->input('enddate');
+                }
+
+                if ($request->has('promotion') && !empty($request->input('promotion'))) {
+                    $offerts->where('promotion', true);
+                    $promotion = $request->input('promotion');
+                }
+                if ($request->has('allinclusive') && !empty($request->input('allinclusive'))) {
+                    $offerts->where('allinclusive', true);
+                    $allinclusive = $request->input('allinclusive');
+                }
+                if ($request->has('lastminute') && !empty($request->input('lastminute'))) {
+                    $offerts->where('lastminute', true);
+                    $lastminute = $request->input('lastminute');
+                }
+                if ($request->has('promo') && !empty($request->input('promo'))) {
+                    $offerts->whereBetween('promo', [$request->input('promo'), 100]);
+                    $ppromo = $request->input('promo');
+                }
+
+                $offerts = $offerts->where('startdate', '<=', $today)
+                ->where('enddate', '>=', $today)
+                ->where('amount', '>', 0)
+                ->join('images', function ($join) {
+                    $join->on('images.offert_id', '=', 'offerts.id')
+                        ->where('images.is_main', '=', true);
+                })
+                ->paginate(10);
+
+            
+                return view('offerts.list',[ 
+                    'offerts' =>  $offerts, #lista wszystkich ofert
+                    'cities' => $cities,
+                    'countries' => $countries,
+                    'regions' => $regions,
+                    // 'promotion' => $promotion,
+                    // 'lastminute' => $lastminute,
+                    'lato' => $lato,
+                    'latostart' => $latostart,
+                    'latoend' => $latoend,
+                    'ccountry' => $ccountry,
+                    'ccity' => $ccity,
+                    'rregion' => $rregion,
+                    'ppersnum' => $ppersnum,
+                    'pprice' => $pprice,
+                    'ppromo' => $ppromo
+                ])->render();
+            } else {
+                //Requesty z paska szybkiego dostępu i z linków przy ofertach
+                $promotion = request()->promotion;
+                $lastminute = request()->lastminute;
+                $allinclusive = request()->allinclusive;
+                $lato = request()->lato;
+                $ccountry = request()->ccountry;
+                $ccity = request()->ccity;
+                $rregion = request()->rregion;
+
+
+                $offerts = Offert::query();
+
+                if($promotion == 1){
+                    $offerts->where('promotion', true);
+                }
+                if($lastminute == 1){
+                    $offerts->where('lastminute', true);
+                }
+                if($allinclusive == 1){
+                    $offerts->where('allinclusive', true);
+                }
+                if($ccountry != null){
+                    $offerts->where('country', $ccountry);
+                }
+                if($ccity != null){
+                    $offerts->where('city', $ccity);
+                }
+                if($rregion != null){
+                    $offerts->where('region', $rregion);
+                }
+
+                if($lato == 1){
+                    $latostart = '2023-06-01';
+                    $latoend = '2023-10-01';
+                    $offerts->where('startdateturnus', '>=', $latostart);
+                    $offerts->where('enddateturnus', '<=', $latoend);
+                }
+                else{
+                    $offerts->where('startdate', '<=', $today);
+                    $offerts->where('enddate', '>=', $today);
+                }
+
+                $offerts = $offerts->where('amount', '>', 0)
+                ->join('images', function ($join) {
+                    $join->on('images.offert_id', '=', 'offerts.id')
+                        ->where('images.is_main', '=', true);
+                })
+                ->paginate(10);
+
+                return view('offerts.list',[ 
+                    // 'offerts' =>  Offert::all(), #lista wszystkich ofert
+                    'offerts' =>  $offerts, #lista wszystkich ofert
+                    'cities' => $cities,
+                    'countries' => $countries,
+                    'regions' => $regions,
+                    'lato' => $lato,
+                    'latostart' => $latostart,
+                    'latoend' => $latoend,
+                    'ccountry' => $ccountry,
+                    'ccity' => $ccity,
+                    'rregion' => $rregion,
+                    'ppersnum' => $ppersnum,
+                    'pprice' => $pprice,
+                    'ppromo' => $ppromo
+                ]);
             }
-            // dd($latostart);
 
-            return view('offerts.list',[ 
-                // 'offerts' =>  Offert::all(), #lista wszystkich ofert
-                'offerts' =>  $offerts, #lista wszystkich ofert
-                'cities' => $cities,
-                'countries' => $countries,
-                'regions' => $regions,
-                'promotion' => $promotion,
-                'lastminute' => $lastminute,
-                'lato' => $lato,
-                'latostart' => $latostart,
-                'latoend' => $latoend,
-                'ccountry' => $ccountry,
-                'ccity' => $ccity,
-                'rregion' => $rregion
-            ]);
+
+            // return view('offerts.list',[ 
+            //     // 'offerts' =>  Offert::all(), #lista wszystkich ofert
+            //     'offerts' =>  $offerts, #lista wszystkich ofert
+            //     'cities' => $cities,
+            //     'countries' => $countries,
+            //     'regions' => $regions,
+            //     'promotion' => $promotion,
+            //     'lastminute' => $lastminute,
+            //     'lato' => $lato,
+            //     'latostart' => $latostart,
+            //     'latoend' => $latoend,
+            //     'ccountry' => $ccountry,
+            //     'ccity' => $ccity,
+            //     'rregion' => $rregion
+            // ]);
             
     }
 
