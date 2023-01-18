@@ -1,9 +1,7 @@
 @extends('layouts.app')
-
 @section('additives')
     @include('constant/dataTable')
 @endsection
-
 @section('content')
 <div class="container">
     <div class="card">

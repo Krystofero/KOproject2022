@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container2 row">
     <!-- Left Side: Browser and Filters -->
@@ -9,7 +8,7 @@
             @csrf
             <div class="form-group">
                 <label for="search">Szukaj:</label>
-                <input type="text" class="form-control" id="search" name="search" value="{{Request::get('search')}}"></input>
+                <input type="text" class="form-control" id="search" name="search" value="{{Request::get('search')}}">
             </div>
             <div class="form-group">
                 <label for="country">Kraj:</label>
@@ -62,7 +61,7 @@
                 @else 
                     value = "1"
                 @endif>
-                </input>
+                
                 @if($pprice!= null)
                     <span id="price-value">{{Request::get('price')}} - 10000 zł</span>
                     {{-- <span id="price-value">1 - {{Request::get('price')}} zł</span> --}}
@@ -88,7 +87,7 @@
                 @else 
                     value = "1"
                 @endif>
-                </input>
+                
                 @if($ppersnum != null)
                     <span id="persnum-value">{{Request::get('persnum')}} - 10 osób</span>
                 @else
@@ -110,14 +109,14 @@
                 <input type="date" class="form-control" id="startdate" name="startdate"
                 @if(request()->lato == 1 || request()->latostart != null)
                     value='{{ $latostart }}'
-                @endif></input>
+                @endif>
             </div>
             <div class="form-group">
                 <label for="enddate">Data końcowa:</label>
                 <input type="date" class="form-control" id="enddate" name="enddate"
                 @if(request()->lato == 1 || request()->latoend != null)
                     value='{{ $latoend }}'
-                @endif></input>
+                @endif>
             </div>
             <div class="form-check">
                 <input
@@ -127,7 +126,7 @@
                  type="checkbox" class="form-check-input" id="promotion" name="promotion" onchange="enableInput('promotion','promo')"
                  @if(request()->promotion)
                     checked
-                 @endif></input>
+                 @endif>
                 <label class="form-check-label" for="promotion">Promocja</label>
             </div>
             <div class="form-group">
@@ -138,7 +137,7 @@
                 @else
                     value = "{{Request::get('promo')}}"
                 @endif>
-                </input>
+                
                 @if($ppromo != null)
                     <span id="promo-value">{{Request::get('promo')}} - 100 %</span>
                 @else
@@ -158,14 +157,14 @@
                 @if(request()->lastminute)
                     checked
                 @endif>
-                </input>
+                
                 <label class="form-check-label" for="lastminute">Last Minute</label>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="allinclusive" name="allinclusive"
                 @if(request()->allinclusive)
                     checked
-                @endif></input>
+                @endif>
                 <label class="form-check-label" for="allinclusive">All Inclusive</label>
             </div>
             <button type="submit" class="btn btn-primary">Szukaj</button>
@@ -188,7 +187,7 @@
             data-promotion="{{ $offert->promotion }}" data-lastminute="{{ $offert->lastminute }}" data-allinclusive="{{ $offert->allinclusive }}">
                 <div class="row no-gutters">
                     <div class="col-md-5 photo">
-                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}"></img>
+                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}">
                         {{-- <div id="myModal{{ $offert->id }}" class="modal">
                             <span class="close" id="close{{ $offert->id }}">&times;</span>
                             <img class="modal-content" id="img{{ $offert->id }}">
@@ -197,7 +196,8 @@
                     <div class="col-md-4">
                         <div class="card-body5">
                             <h5 class="card-title tt">{{ $offert->title }}</h5>
-                            <p class="card-text"><small>
+                            <p class="card-text">
+                                <small>
                                 <div class="form-group row upperlinks">
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
                                         {{-- {{ $offert->country }} --}}
@@ -208,7 +208,8 @@
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccity' => $offert->city]) }}" id="city-link">{{ $offert->city }}</a>
                                         {{-- {{ $offert->city }} --}}
                                 </div>
-                            </small></p>
+                                </small>
+                            </p>
                             @if($offert->persnum == 1)
                                 <p class="card-text">{{ $offert->persnum }} osoba</p>
                             @else
@@ -258,7 +259,7 @@
     <div class="col-md-3 animated fadeInRight">
         <h3>Aktualności</h3>
         <div class="card mb-3" style="max-width: 300px;">
-            <img src="img/reklama1.webp" class="card-img-top" alt="Ad"></img>
+            <img src="img/reklama1.webp" class="card-img-top" alt="Ad">
             <div class="card-body">
                 <h5 class="card-title">Tańsze loty</h5>
                 <p class="card-text">Zrelaksuj się i nie czekaj już dłużej, bo nadszedł czas na tańsze loty!</p>
@@ -266,7 +267,7 @@
             </div>
         </div>
         <div class="card mb-3" style="max-width: 300px;">
-            <img src="img/smak-wakacji-logo1.svg" class="card-img-top" alt="Ad"></img>
+            <img src="img/smak-wakacji-logo1.svg" class="card-img-top" alt="Ad">
             <div class="card-body">
                 <h5 class="card-title">Nowy rozdział</h5>
                 <p class="card-text">Nowe otwarcie naszego biura w Warszawie.</p>
@@ -282,74 +283,6 @@
             </div>
         </div>
     </div>
-
-    
-
-
-
-    {{-- <div class="card">
-        <div class="row" id="titlerow">
-            <div class="col-6 text-white">
-                <h1><i class="fas fa-users"></i> {{ __('Zarządzanie ofertami') }}</h1>
-            </div>
-        </div>
-        <table class="text-white display responsive nowrap" id="myTable" style="width:100%">
-            <thead>
-            <tr>
-                <th scope="col">Nazwa</th>
-                <th scope="col">Państwo</th>
-                <th scope="col">Data początkowa turnusu</th>
-                <th scope="col">Data końcowa turnusu</th>
-                <th scope="col">Cena</th>
-                <th scope="col">Data początkowa trwania oferty</th>
-                <th scope="col">Data końcowa trwania oferty</th>
-                <th scope="col">Status</th>
-                <th scope="col">Akcje</th>
-            </tr>
-            </thead>
-            <tbody class="text-dark">
-            @foreach($offerts as $offert)
-                <tr>
-                    <th scope="row">{{ $offert->title }}</th>
-                    <td>{{ $offert->country }}</td>
-                    <td>{{ $offert->startdateturnus }}</td>
-                    <td>{{ $offert->enddateturnus }}</td>
-                    <td>{{ $offert->price }} zł</td>
-                    <td>{{ $offert->startdate }}</td>
-                    <td>{{ $offert->enddate }}</td>
-                    @if($offert->startdate > now()) 
-                        <td>Nie rozpoczęto</td>
-                    @elseif ($offert->enddate < now())
-                        <td>Zakończono</td>
-                    @else
-                        <td>W trakcie</td>
-                    @endif
-                    <td class="text-center">
-                        <a href="{{ route('offertsModerator.show',  $offert->id) }}">
-                            <button class="btn btn-info btn-sm" title="Podgląd oferty"><i class="fas fa-newspaper"></i></button>
-                        </a>
-                        <a href="{{ route('offertsModerator.edit', $offert->id) }}">
-                            <button class="btn btn-success btn-sm" title="Edycja oferty"><i class="far fa-edit"></i></button>
-                        </a>
-                        <button class="btn btn-danger btn-sm delete" title="Usunięcie oferty" onclick="usunOferte({{ $offert->id }})" data-id="{{ $offert->id }}">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <div class="form-group row mt-2 mb-2 text-center">
-            <div class="col-md-3">
-                <a href="{{ route('offertsModerator.create') }}">
-                    <button class="border border-secondary btn btn-primary2" style="color: white;"><i class="far fa-edit"></i>Utwórz nową ofertę</button>
-                </a>
-            </div>
-        </div>
-    </div> --}}
-
-
-    
 </div>
 {{-- <script>
 // var promotion = '{{ request()->promotion }}';

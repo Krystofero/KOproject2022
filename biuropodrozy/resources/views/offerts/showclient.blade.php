@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -28,7 +27,7 @@
                         @foreach($images as $image)
                             @if($image->is_main == true)
                                 {{-- <div class="col-md-8"> --}}
-                                    <img src="{{ asset($image->url) }}" class="mainimagelook" id="image{{ $image->id }}" alt="Zdjęcie główne" title="Zdjęcie główne"></img>
+                                    <img src="{{ asset($image->url) }}" class="mainimagelook" id="image{{ $image->id }}" alt="Zdjęcie główne" title="Zdjęcie główne">
                                 {{-- </div> --}}
                                 <div id="myModal{{ $image->id }}" class="modal">
                                     <span class="close" id="close{{ $image->id }}">&times;</span>

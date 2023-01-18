@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="card">
     <div class="container-fluid text-md-left">
