@@ -155,6 +155,51 @@ class OffertController extends Controller
                 })
                 ->paginate(10);
 
+                //Dodanie odpowiednich przekierowań do paginacji
+                if ($request->has('search') && !empty($request->input('search'))) {
+                    $offerts->appends(array('search' => $request->input('search')))->links();
+                }
+
+                if ($request->has('country') && !empty($request->input('country'))) {
+                    $offerts->appends(array('ccountry' => $request->input('country')))->links();
+                }
+
+                if ($request->has('region') && !empty($request->input('region'))) {
+                    $offerts->appends(array('rregion' => $request->input('region')))->links();
+                }
+
+                if ($request->has('city') && !empty($request->input('city'))) {
+                    $offerts->appends(array('ccity' => $request->input('city')))->links();
+                }
+
+                if ($request->has('price') && !empty($request->input('price'))) {
+                    $offerts->appends(array('price' => $request->input('price')))->links();
+                }
+
+                if ($request->has('persnum') && !empty($request->input('persnum'))) {
+                    $offerts->appends(array('persnum' => $request->input('persnum')))->links();
+                }
+
+                if ($request->has('startdate') && !empty($request->input('startdate'))) {
+                    $offerts->appends(array('startdate' => $request->input('startdate')))->links();
+                }
+
+                if ($request->has('enddate') && !empty($request->input('enddate'))) {
+                    $offerts->appends(array('enddate' => $request->input('enddate')))->links();
+                }
+
+                if ($request->has('promotion') && !empty($request->input('promotion'))) {
+                    $offerts->appends(array('promotion' => 1))->links();
+                }
+                if ($request->has('allinclusive') && !empty($request->input('allinclusive'))) {
+                    $offerts->appends(array('allinclusive' => 1))->links();
+                }
+                if ($request->has('lastminute') && !empty($request->input('lastminute'))) {
+                    $offerts->appends(array('lastminute' => 1))->links();
+                }
+                if ($request->has('promo') && !empty($request->input('promo'))) {
+                    $offerts->appends(array('promo' => $request->input('promo')))->links();
+                }
             
                 return view('offerts.list',[ 
                     'offerts' =>  $offerts, #lista wszystkich ofert
@@ -216,12 +261,67 @@ class OffertController extends Controller
                     $offerts->where('enddate', '>=', $today);
                 }
 
+                //Przekierowania do paginacji przy ajax
+                if ($request->has('price') && !empty($request->input('price'))) {
+                    $req = $request->input('price');
+                    $offerts->where(function ($query) use ($req) {
+                        $query->whereBetween('price', [$req, 10000])
+                            ->whereNull('promotionprice')
+                            ->orwhereBetween('promotionprice', [$req, 10000]);
+                    }); 
+                    $pprice = $request->input('price');
+                }
+
+                if ($request->has('persnum') && !empty($request->input('persnum'))) {
+                    $offerts->whereBetween('persnum', [$request->input('persnum'), 10]);
+                    $ppersnum = $request->input('persnum');
+                }
+
+                if ($request->has('startdate') && !empty($request->input('startdate'))) {
+                    $offerts->where('startdateturnus', '>=', $request->input('startdate'));
+                    $latostart = $request->input('startdate');
+                }
+
+                if ($request->has('enddate') && !empty($request->input('enddate'))) {
+                    $offerts->where('enddateturnus', '<=', $request->input('enddate'));
+                    $latoend = $request->input('enddate');
+                }
+
+                if ($request->has('promo') && !empty($request->input('promo'))) {
+                    $offerts->whereBetween('promo', [$request->input('promo'), 100]);
+                    $ppromo = $request->input('promo');
+                }
+
                 $offerts = $offerts->where('amount', '>', 0)
                 ->join('images', function ($join) {
                     $join->on('images.offert_id', '=', 'offerts.id')
                         ->where('images.is_main', '=', true);
                 })
                 ->paginate(10);
+
+                //Dodanie odpowiednich przekierowań do paginacji
+                if($lato == 1){
+                    $offerts->appends(array('lato' => '1'))->links();
+                }
+                if($promotion == 1){
+                    $offerts->appends(array('promotion' => '1'))->links();
+                }
+                if($lastminute == 1){
+                    $offerts->appends(array('lastminute' => '1'))->links();
+                }
+                if($allinclusive == 1){
+                    $offerts->appends(array('allinclusive' => '1'))->links();
+                }
+                if($ccountry != null){
+                    $offerts->appends(array('ccountry' => $ccountry))->links();
+                }
+                if($ccity != null){
+                    $offerts->appends(array('ccity' => $ccity))->links();
+                }
+                if($rregion != null){
+                    $offerts->appends(array('rregion' => $rregion))->links();
+                }
+
 
                 return view('offerts.list',[ 
                     // 'offerts' =>  Offert::all(), #lista wszystkich ofert
