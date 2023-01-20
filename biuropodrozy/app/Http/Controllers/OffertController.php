@@ -146,6 +146,11 @@ class OffertController extends Controller
                     $ppromo = $request->input('promo');
                 }
 
+                //Sortowanie
+                if ($request->has('sort') && $request->has('order')) {
+                    $offerts->orderBy($request->input('sort'), $request->input('order'));
+                }
+
                 $offerts = $offerts->where('startdate', '<=', $today)
                 ->where('enddate', '>=', $today)
                 ->where('amount', '>', 0)
@@ -199,6 +204,11 @@ class OffertController extends Controller
                 }
                 if ($request->has('promo') && !empty($request->input('promo'))) {
                     $offerts->appends(array('promo' => $request->input('promo')))->links();
+                }
+                //Sortowanie
+                if ($request->has('sort') && $request->has('order')) {
+                    $offerts->appends(array('sort' => $request->input('sort')))->links();
+                    $offerts->appends(array('order' => $request->input('order')))->links();
                 }
             
                 return view('offerts.list',[ 
@@ -291,6 +301,12 @@ class OffertController extends Controller
                     $offerts->whereBetween('promo', [$request->input('promo'), 100]);
                     $ppromo = $request->input('promo');
                 }
+                
+                //Sortowanie
+                if ($request->has('sort') && $request->has('order')) {
+                    $offerts->orderBy($request->input('sort'), $request->input('order'));
+                }
+
 
                 $offerts = $offerts->where('amount', '>', 0)
                 ->join('images', function ($join) {
@@ -321,7 +337,11 @@ class OffertController extends Controller
                 if($rregion != null){
                     $offerts->appends(array('rregion' => $rregion))->links();
                 }
-
+                //Sortowanie
+                if ($request->has('sort') && $request->has('order')) {
+                    $offerts->appends(array('sort' => $request->input('sort')))->links();
+                    $offerts->appends(array('order' => $request->input('order')))->links();
+                }
 
                 return view('offerts.list',[ 
                     // 'offerts' =>  Offert::all(), #lista wszystkich ofert

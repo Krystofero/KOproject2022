@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('#filters').on('submit', function(e) {
         e.preventDefault();
         var formData = $(this).serialize();
-        console.log(formData);
+        // console.log(formData);
         // console.log(Url);
         $.ajax({
             type: 'GET',
@@ -32,6 +32,34 @@ $(document).ready(function() {
         input.disabled = false;
         // input.value = ppromo;
     }
+
+    var sort = 'name';
+    var order = $('#order').val();
+    $('.sort').on('click', function(e) {
+        e.preventDefault();
+        // $('.sort').removeClass('active');
+        // $(this).addClass('active');
+        sort = $(this).data('sort');
+        console.log(order);
+        if (order == 'asc') {
+            order = 'desc';
+        } else {
+            order = 'asc';
+        }
+        var formData = $('form').serialize();
+        formData += '&sort=' + sort + '&order=' + order;
+        console.log(order);
+        console.log(formData);
+        $.ajax({
+            type: 'GET',
+            url: Url,
+            data: formData,
+            success: function(data) {
+                $('#app').html(data);
+            }
+        });
+    });
+
 });
 
 $('#filters').on('input', function() {

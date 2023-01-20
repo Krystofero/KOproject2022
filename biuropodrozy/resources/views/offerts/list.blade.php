@@ -175,6 +175,13 @@
     <div class="col-md-6 animated fadeInUp" id="offerts">
     @if(count($offerts) > 0)
         <h3>Oto nasze oferty</h3>
+        <input id="order" value="{{request()->order}}" hidden></input>
+        <p>Sortowanie: 
+        <a href="#" data-sort="title" class="sort @if(request()->sort == "title") active @endif">Nazwa</a>
+        <a href="#" data-sort="country" class="sort @if(request()->sort == "country") active @endif">Kraj</a>
+        <a href="#" data-sort="region" class="sort @if(request()->sort == "region") active @endif">Region</a>
+        <a href="#" data-sort="city" class="sort @if(request()->sort == "city") active @endif">Miasto</a>
+        </p>
         @foreach($offerts as $offert)
             <div class="card mb-3" style="max-width: 940px;"
             data-country="{{ $offert->country }}" data-city="{{ $offert->city }}" data-region="{{ $offert->region }}" data-persnum="{{ $offert->persnum }}"

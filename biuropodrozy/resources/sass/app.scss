@@ -751,3 +751,22 @@ body{
        color: #00fb97;
        text-decoration: none;
     }
+
+    a {
+      text-decoration: none;
+    }
+
+    a.sort {
+      color: #333;
+      text-decoration: none;
+    }
+    
+    a.sort:hover {
+        color: #0074D9;
+        text-decoration: underline;
+    }
+    
+    a.sort.active {
+        color: #0074D9;
+        font-weight: bold;
+    }
