@@ -326,7 +326,7 @@
                         </div>
                         <div class="col-md-12 mb-2" id="mainphoto">
                             <img id="preview-image-before-upload" url="/img/image-not-found.jpg" 
-                            alt="brak zdjęcia głównego" style="max-height: 250px;">
+                            alt="brak zdjęcia głównego">
                         </div>
                         <br>
                         <div class="form-group">

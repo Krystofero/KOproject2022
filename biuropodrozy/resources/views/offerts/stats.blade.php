@@ -10,7 +10,7 @@
                 <h1><i class="fas fa-users"></i> {{ __('Podsumowanie zamówienień') }}</h1>
             </div>
         </div>
-        <table class="text-white display responsive nowrap" id="myTable" style="width:100%">
+        <table class="text-white display responsive nowrap" id="myTable">
             <thead>
             <tr>
                 <th scope="col">Kwota</th>

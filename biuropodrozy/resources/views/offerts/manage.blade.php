@@ -10,7 +10,7 @@
                 <h1><i class="fas fa-users"></i> {{ __('Zarządzanie ofertami') }}</h1>
             </div>
         </div>
-        <table class="text-white display responsive nowrap" id="myTable" style="width:100%">
+        <table class="text-white display responsive nowrap" id="myTable">
             <thead>
             <tr>
                 <th scope="col">Nazwa</th>
@@ -60,7 +60,7 @@
         <div class="form-group row mt-2 mb-2 text-center">
             <div class="col-md-3">
                 <a href="{{ route('offertsModerator.create') }}">
-                    <button class="border border-secondary btn btn-primary2" style="color: white;"><i class="far fa-edit"></i>Utwórz nową ofertę</button>
+                    <button class="border border-secondary btn btn-primary2"><i class="far fa-edit"></i>Utwórz nową ofertę</button>
                 </a>
             </div>
         </div>

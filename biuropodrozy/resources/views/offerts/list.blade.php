@@ -20,9 +20,6 @@
                                 selected
                             @endif>{{ $country->country }}</option>
                     @endforeach
-                    {{-- <option value="Grecja">Grecja</option>
-                    <option value="Włochy">Włochy</option>
-                    <option value="Polska">Polska</option> --}}
                 </select>
             </div>
             <div class="form-group">
@@ -47,9 +44,6 @@
                                 selected
                             @endif>{{ $city->city }}</option>
                     @endforeach
-                    {{-- <option value="Paryż">Paryż</option>
-                    <option value="Rzym">Rzym</option>
-                    <option value="Ateny">Ateny</option> --}}
                 </select>
             </div>
             
@@ -64,20 +58,9 @@
                 
                 @if($pprice!= null)
                     <span id="price-value">{{Request::get('price')}} - 10000 zł</span>
-                    {{-- <span id="price-value">1 - {{Request::get('price')}} zł</span> --}}
                 @else
                     <span id="price-value">1 - 10000 zł</span>
                 @endif
-                {{-- <select class="form-control" id="price">
-                    <option value="">Wszystkie</option>
-                    <option value="0-500">0zł - 500zł</option>
-                    <option value="500-1000">500zł - 1000zł</option>
-                    <option value="1000-2000">1000zł - 2000zł</option>
-                    <option value="2500-5000">2500zł - 5000zł</option>
-                    <option value="5000-7500">5000zł - 7500zł</option>
-                    <option value="7500-10000">7500zł - 10000zł</option>
-                    <option value="10000+">10000zł+</option>
-                </select> --}}
             </div>
             <div class="form-group">
                 <label for="persnum">Ilość osób:</label>
@@ -93,16 +76,6 @@
                 @else
                     <span id="persnum-value">1 - 10 osób</span>
                 @endif
-                {{-- <select class="form-control" id="price">
-                    <option value="">Wszystkie</option>
-                    <option value="0-500">0zł - 500zł</option>
-                    <option value="500-1000">500zł - 1000zł</option>
-                    <option value="1000-2000">1000zł - 2000zł</option>
-                    <option value="2500-5000">2500zł - 5000zł</option>
-                    <option value="5000-7500">5000zł - 7500zł</option>
-                    <option value="7500-10000">7500zł - 10000zł</option>
-                    <option value="10000+">10000zł+</option>
-                </select> --}}
             </div>
             <div class="form-group">
                 <label for="startdate">Data początkowa:</label>
@@ -143,14 +116,6 @@
                 @else
                     <span id="promo-value">1 - 100 %</span>
                 @endif
-                {{-- <select class="form-control" id="promo" disabled>
-                    <option value="">Wszystkie</option>
-                    <option value="1-5%">1-15%</option>
-                    <option value="15-25%">15-25%</option>
-                    <option value="25-50%">25-50%</option>
-                    <option value="50-75%">50-75%</option>
-                    <option value="75%+">75%+</option>
-                </select> --}}
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="lastminute" name="lastminute"
@@ -194,11 +159,7 @@
             data-promotion="{{ $offert->promotion }}" data-lastminute="{{ $offert->lastminute }}" data-allinclusive="{{ $offert->allinclusive }}">
                 <div class="row no-gutters">
                     <div class="col-md-5 photo">
-                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{ $offert->id }}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}">
-                        {{-- <div id="myModal{{ $offert->id }}" class="modal">
-                            <span class="close" id="close{{ $offert->id }}">&times;</span>
-                            <img class="modal-content" id="img{{ $offert->id }}">
-                        </div> --}}
+                        <img src="{{ asset($offert->url) }}" class="card-img" id="{{$offert->id}}" onclick="openModal({{ $offert->id }})" alt="{{ $offert->city }}">
                     </div>
                     <div class="col-md-4">
                         <div class="card-body5">
@@ -207,13 +168,10 @@
                                 <small>
                                 <div class="form-group row upperlinks">
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccountry' => $offert->country]) }}" id="country-link">{{ $offert->country }}</a>
-                                        {{-- {{ $offert->country }} --}}
                                     /
                                     <a class="nav-link2" href="{{ route('offerts.index', ['rregion' => $offert->region]) }}" id="region-link">{{ $offert->region }}</a>
-                                        {{-- {{ $offert->region }} --}}
                                     /
                                     <a class="nav-link2" href="{{ route('offerts.index', ['ccity' => $offert->city]) }}" id="city-link">{{ $offert->city }}</a>
-                                        {{-- {{ $offert->city }} --}}
                                 </div>
                                 </small>
                             </p>
