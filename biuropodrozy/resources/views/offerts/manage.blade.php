@@ -66,31 +66,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" > 
-const deleteUrl = "{{ url('offertsModerator') }}/";
-    function usunOferte(del_id) {
-          var _this = this;
-          Swal.fire({
-            title: "Czy na pewno chcesz usunąć ofertę?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Tak',
-            cancelButtonText: 'Nie'
-          }).then(function (result) {
-            if (result.value) {
-              $.ajax({
-                method: "DELETE",
-                url: deleteUrl + del_id
-              }).done(function (data) {
-                window.location.reload();
-              }).fail(function (data) {
-                Swal.fire('Coś poszło nie tak...spróbuj ponownie później', data.responseJSON.message, data.responseJSON.status);
-              });
-            }
-          });
-    }
-
-</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{asset('/js/offertsmanagelist.js')}}"></script>
 @endsection
