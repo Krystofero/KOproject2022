@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientOrderController;
 use App\Http\Controllers\ModeratorOrderController;
 use App\Http\Controllers\ModeratorOffertController;
 use App\Http\Controllers\OffertController;
@@ -72,8 +73,11 @@ Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych 
 
 
     
-    // Route::middleware(['can:isClient'])->group(function() { #grupa Student
-    // });
+    Route::middleware(['can:isClient'])->group(function() { #grupa Student
+        Route::resource('orders', ClientOrderController::class)->only([ //oferty tworzone przez moderatora
+            'index'
+        ]); 
+    });
   
 });
 

@@ -53,6 +53,11 @@
                             </div>
                         </li>
                     @endcan
+                    @can('isClient')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('orders.index') }}">Moje zamowienia</a>
+                        </li>
+                    @endcan
                 @endauth
             </ul>
             <!-- Right Side Of Navbar -->
