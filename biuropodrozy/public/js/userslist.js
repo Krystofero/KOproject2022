@@ -1,3 +1,4 @@
+const deleteUrl = "http://127.0.0.1:8000/users/";
 $(document).ready(function () {
     // const loadMoreBtn = $('#loadMoreRecordsBtn');
     $('#myTable').dataTable({

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('additives')
     @include('constant/dataTable')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @endsection
 @section('content')
 <div class="container">
@@ -66,6 +67,5 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="{{asset('/js/offertsmanagelist.js')}}"></script>
 @endsection
