@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('additives')
     @include('constant/dataTable')
+    <script src="{{asset('/js/orderslist.js')}}"></script>
 @endsection
 @section('content')
 <div class="container">
@@ -53,5 +54,4 @@
         </table>
     </div>
 </div>
-<script src="{{asset('/js/orderslist.js')}}"></script>
 @endsection
