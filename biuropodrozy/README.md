@@ -28,7 +28,7 @@ npm run dev</br>
 ## Uruchomienie serwera artisan
 php artisan serve
 
-## OPIS SYSTEMU, Funkcjonalności, ppodział na role
+## OPIS SYSTEMU, Funkcjonalności, podział na role
 Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym klientom usług biura podróży. Przedstawia wyszukiwarkę ofert podróży wraz z ich opisami. Ułatwia klientom wybór konkretnej oferty poprzez filtrowanie ich wedle preferencji (cena, promocje, all inclusive, last minute, data początkowa/końcowa, kraj, miasto,region). Strona jest w pełni responsywna. W aplikacji możemy wyróżnić 3 użytkowników: administratora, użytkownika niezalogowanego(gościa) oraz użytkownika zalogowanego(klienta). 
 </br>
 # Użytkownik niezalogowany może:</br>
