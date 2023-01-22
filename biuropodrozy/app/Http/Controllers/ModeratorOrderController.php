@@ -29,10 +29,20 @@ class ModeratorOrderController extends Controller
         }else {
             return view('offerts.stats', [
                 // 'offerts' => Offert::all(),
-                'orders' => Order::all()
+                'orders' => Order::all(),
+                'order_status_list' => array(1 => 'Oczekujące', 2 => 'Zaakceptowane', 3 => 'Zrealizowane')
             ]);
         }
             
+    }
+
+    public function updateOrderStatus(Request $request)
+    {
+        $order = Order::find($request->order_id);
+        $order->status = $request->status;
+        $order->save();
+
+        return response()->json(['success' => 'Zmieniono status zamówienia']);
     }
 
 }

@@ -1,8 +1,12 @@
+var Url = "http://127.0.0.1:8000/ordersModerator/update-order-status";
 $(document).ready(function () {
     $('#myTable').dataTable({
         "responsive": true,
         "order": [
             [0, "asc"]
+        ],
+        "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [-1] }
         ],
         "columns": [
             null,
@@ -10,6 +14,7 @@ $(document).ready(function () {
             { "sType": "polish-string" },
             { "sType": "polish-string" },
             null,
+            { "sType": "polish-string" },
             { "sType": "polish-string" },
             { "sType": "polish-string" }
         ],
@@ -29,6 +34,21 @@ $(document).ready(function () {
                 "last": "Ostatnia"
             }
         }
+    });
+
+    $('select[name="order_status"]').on('change', function(){
+        var status = $(this).val();
+        var orderId = $(this).data('order-id');
+        var Data = '&status=' + status + '&order_id=' + orderId;
+        // console.log(Data);
+        $.ajax({
+            url: Url,
+            type: 'POST',
+            data: Data,
+            success: function(data) {
+                console.log(data.success);
+            }
+        });
     });
 
 });

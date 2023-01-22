@@ -66,6 +66,7 @@ Route::middleware(['auth', 'verified'])->group(function() { #grupa zalogowanych 
         Route::resource('ordersModerator', ModeratorOrderController::class)->only([ //oferty tworzone przez moderatora
             'index'
         ]); 
+        Route::post('/ordersModerator/update-order-status', 'App\Http\Controllers\ModeratorOrderController@updateOrderStatus')->name('update.order.status');
 
     });
 

@@ -20,6 +20,7 @@
                 <th scope="col">Telefon</th>
                 <th scope="col">Wykupione ubezpieczenie</th>
                 <th scope="col">Utworzono</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody class="text-dark">
@@ -39,6 +40,13 @@
                         @endif
                     </td>
                     <td>{{ $order->created_at }}</td>
+                    <td>
+                        <select class="form-select" aria-label=".form-select-lg example" data-order-id="{{ $order->id }}" name="order_status" id="order_status" @if($order->status == 'Zrealizowane') disabled @endif>
+                            @foreach ($order_status_list as $key => $val)
+                                <option value={{$val}} @if (isset($order->status) && $order->status == $val) selected @endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
