@@ -1,6 +1,6 @@
 author Krzysztof Osiejewski
 
-## Projekt Biura Podróży
+# Projekt Biura Podróży
 ## OPIS SYSTEMU - funkcjonalności
 Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym klientom usług biura podróży. Przedstawia wyszukiwarkę ofert podróży wraz z ich opisami. Ułatwia klientom wybór konkretnej oferty poprzez sortowanie lub filtrowanie  ich wedle preferencji (cena, promocje, all inclusive, last minute, data początkowa/końcowa, kraj, miasto,region). Strona jest w pełni responsywna. W aplikacji możemy wyróżnić 3 użytkowników: administratora, użytkownika niezalogowanego(gościa) oraz użytkownika zalogowanego(klienta). Użytkownik niezalogowany może przeglądać i wyszukiwać oferty, natomiast w przypadku próby podjęcia kupna zostaje on przekierowany do ekrany logowania/rejestracji. Po zalogowaniu kient uzyskuje możliwość kupna, a także ma dostęp do historii własnych zakupów. Administrator zarządza utworzonymi użytkownikami i ma możliwość usuwania ich, bądź przydzielania odpowiednich ról. Natomiast moderator może tworzyć oferty, dodając odpowiednie opisy, dodatkowe lub obowiązkowe pola takie jak: tytuł, opis, cena, cena promocyjna, cena ubezpieczenia, all inclusive, last minute, itd., a także ma możliwość wprowadzenia ilości utworzonych ofert. Ilość tych ofert jest dekrementowana wraz z dokonanym zakupem, a oferty których ilość osiągnie wartość zero nie są już dostępne dla klienta. 
 </br>
@@ -10,14 +10,14 @@ Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym kl
 •	Działa 24h na dobę
 •	Działa na wielu przeglądarkach internetowych
 ## Podział na role i możliwości użytkowników
-# Użytkownik niezalogowany może:</br>
+## Użytkownik niezalogowany może:</br>
 •	Przeglądać oferty – oferty są wczytywane asynchronicznie, tak aby nie generować dużego obciążenia i nie wydłużać czasu ładowania witryny, strona ma wbudowaną paginację</br>
 •	Sortować oferty – sortowanie dostępne po tytule, mieście, regionie, kraju</br>
   o	Filtrować oferty – wbudowana wyszukiwarka oraz szereg filtrów, takich jak daty początku/końca, promocje, zakres cenowy, last minute, all inclusive itp.</br>
 •	Zalogować się</br>
 •	Zarejestrować się</br>
 
-# Użytkownik zalogowany(Klient) może:</br>
+## Użytkownik zalogowany(Klient) może:</br>
 •	Wylogować się</br>
 •	Przeglądać oferty – oferty są wczytywane asynchronicznie, tak aby nie generować dużego obciążenia i nie wydłużać czasu ładowania witryny, strona ma wbudowaną paginację</br>
 •	Sortować oferty – sortowanie dostępne po tytule, mieście, regionie, kraju</br>
@@ -26,12 +26,12 @@ Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym kl
 •	Przeglądać zakupione przez siebie oferty  - m.in. możliwość kontrolowania cen i zakresu dat danych podróży</br>
   o	Podejrzeć status oferty – może być zaakceptowana, zrealizowana, oczekująca</br>
 
-# Administrator może:</br>
+## Administrator może:</br>
 •	Wylogować się</br>
 •	Nadawać użytkownikom odpowiednie uprawnienia – adminstratora, moderatora lub klienta</br>
 •	Usuwać użytkowników – jest to dodatkowo zabezpieczone odpowiednim modalem 
 
-# Moderator może:</br>
+## Moderator może:</br>
 •	Wylogować się</br>
 •	Tworzyć nowe oferty</br>
   o	Dodać zdjęcie główne – musi być w odpowiednim formacie</br>
