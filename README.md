@@ -4,7 +4,7 @@ author Krzysztof Osiejewski
 ## OPIS SYSTEMU - funkcjonalności
 Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym klientom usług biura podróży. Przedstawia wyszukiwarkę ofert podróży wraz z ich opisami. Ułatwia klientom wybór konkretnej oferty poprzez sortowanie lub filtrowanie  ich wedle preferencji (cena, promocje, all inclusive, last minute, data początkowa/końcowa, kraj, miasto,region). Strona jest w pełni responsywna. W aplikacji możemy wyróżnić 3 użytkowników: administratora, użytkownika niezalogowanego(gościa) oraz użytkownika zalogowanego(klienta). Użytkownik niezalogowany może przeglądać i wyszukiwać oferty, natomiast w przypadku próby podjęcia kupna zostaje on przekierowany do ekrany logowania/rejestracji. Po zalogowaniu kient uzyskuje możliwość kupna, a także ma dostęp do historii własnych zakupów. Administrator zarządza utworzonymi użytkownikami i ma możliwość usuwania ich, bądź przydzielania odpowiednich ról. Natomiast moderator może tworzyć oferty, dodając odpowiednie opisy, dodatkowe lub obowiązkowe pola takie jak: tytuł, opis, cena, cena promocyjna, cena ubezpieczenia, all inclusive, last minute, itd., a także ma możliwość wprowadzenia ilości utworzonych ofert. Ilość tych ofert jest dekrementowana wraz z dokonanym zakupem, a oferty których ilość osiągnie wartość zero nie są już dostępne dla klienta. 
 </br>
-#Wymagania niefunkcjonalne
+##Wymagania niefunkcjonalne
 •	Aplikacja responsywna, intuicyjna, bezpieczna i łatwa w obsłudze
 •	Wymaga dostępu do Internetu
 •	Działa 24h na dobę
@@ -66,34 +66,34 @@ https://nodejs.org/en/download/releases/  </br>
 Ewentualnie można zainstalować menadżer wersji Node – nvm i użyć polecenia:</br>
 nvm use 16.18.0 </br>
 2. npm - Nastepnie należy zainstalować interfejs wiersza poleceń npm w wersji 8.19.2 lub nowszej,
-sprawdzamy czy nie jest już zainstalowany i wyświetlamy obecną wersję za pomocą polecenia: 
-npm -v 
-Instalujemy używając komendy:
-npm install
+sprawdzamy czy nie jest już zainstalowany i wyświetlamy obecną wersję za pomocą polecenia: </br>
+npm -v </br>
+Instalujemy używając komendy:</br>
+npm install</br>
 
 3. PHP – instalujemy wersję 8.1.10 </br>
-4. Composer – instalujemy wersję tego menadżera zależności PHP 2.5.1 lub nowszą
-5. Instalujemy pgAdmin4
-5. Konfiguracja połączenia z bazą danych:
+4. Composer – instalujemy wersję tego menadżera zależności PHP 2.5.1 lub nowszą</br>
+5. Instalujemy pgAdmin4</br>
+6. Konfiguracja połączenia z bazą danych:</br>
 Tworzymy serwer zawierający naszą bazę danych w pgAdmin4, 
-edytujemy zmienne dotyczące bazy w pliku .env :
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=2000613
-Odkomentowujemy dwie linie dotyczące pgsql w pliku php.ini w folderze php(jeśli zainstalowaliśmy XAMPP jest w folderze xampp): 
-extension=php_pgsql.dll 
-extension=php_pdo_pgsql.dll
+edytujemy zmienne dotyczące bazy w pliku .env :</br>
+DB_CONNECTION=pgsql</br>
+DB_HOST=127.0.0.1</br>
+DB_PORT=5432</br>
+DB_DATABASE=postgres</br>
+DB_USERNAME=postgres</br>
+DB_PASSWORD=2000613</br>
+Odkomentowujemy dwie linie dotyczące pgsql w pliku php.ini w folderze php(jeśli zainstalowaliśmy XAMPP jest w folderze xampp): </br>
+extension=php_pgsql.dll </br>
+extension=php_pdo_pgsql.dll </br>
 
 
 ##  Kompilacja (komendy wpisujemy znajdując się w folderze biuropodrozy):
-npm install
-npm run build
-npm run dev
-Następnie uruchomienie serwera artisan poleceniem:
-php artisan serve
+npm install</br>
+npm run build</br>
+npm run dev</br>
+Następnie uruchomienie serwera artisan poleceniem:</br>
+php artisan serve</br>
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
