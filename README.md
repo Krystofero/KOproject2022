@@ -1,4 +1,4 @@
-author Krzysztof Osiejewski
+autor Krzysztof Osiejewski
 
 # Projekt Biura Podróży
 ## OPIS SYSTEMU - funkcjonalności
@@ -97,28 +97,28 @@ php artisan serve</br>
 
 
 ##  Diagram przypadków użycia:
- ![image](https://user-images.githubusercontent.com/80296885/223732992-f675fb09-71c3-4ed9-a563-1facf65bfc6f.png)
+ ![image](https://user-images.githubusercontent.com/80296885/223732992-f675fb09-71c3-4ed9-a563-1facf65bfc6f.png)</br>
 ##  Diagram stanów (Cykl życia oferty):
-![image](https://user-images.githubusercontent.com/80296885/223733061-d2bbf3e8-52d1-468a-9ec1-3007b11727bf.png)
+![image](https://user-images.githubusercontent.com/80296885/223733061-d2bbf3e8-52d1-468a-9ec1-3007b11727bf.png)</br>
 ##  Diagram sekwencji (rejestracja):
-![image](https://user-images.githubusercontent.com/80296885/223733135-71271df7-b329-4029-9223-1e95d5b5f857.png)
+![image](https://user-images.githubusercontent.com/80296885/223733135-71271df7-b329-4029-9223-1e95d5b5f857.png)</br>
 ##  Diagram klas:
-![image](https://user-images.githubusercontent.com/80296885/223733237-77a23e62-2ba2-472f-9485-8b35e2d11deb.png)
+![image](https://user-images.githubusercontent.com/80296885/223733237-77a23e62-2ba2-472f-9485-8b35e2d11deb.png)</br>
 ## Diagram związków encji (ERD):
-![image](https://user-images.githubusercontent.com/80296885/223735287-af675eb3-6b18-4fa9-951d-2b031b2578c0.png)
+![image](https://user-images.githubusercontent.com/80296885/223735287-af675eb3-6b18-4fa9-951d-2b031b2578c0.png)</br>
 
 ## Wygląd strony głównej:
-![image](https://user-images.githubusercontent.com/80296885/223734004-ea3f300c-81b9-4af1-bb7e-cbc303bf6f93.png)
+![image](https://user-images.githubusercontent.com/80296885/223734004-ea3f300c-81b9-4af1-bb7e-cbc303bf6f93.png)</br>
 Elementami stałymi wszystkich stron są: panel nawigacyjny oraz stopka. Panel nawigacyjny znajduje się u góry ekranu, a jego zawartość zmienia się w zależności od uprawnień danego użytkownika, a także od tego czy jest on zalogowany. Stopka natomiast znajduje się u dołu witryny i zawiera informacje kontaktowe, a także przekierowania do social mediów i polityki prywatności. 
 ## Widok – przegląd ofert
-![image](https://user-images.githubusercontent.com/80296885/223734318-a4b457f8-5496-4b52-b958-bfad97a05724.png)
+![image](https://user-images.githubusercontent.com/80296885/223734318-a4b457f8-5496-4b52-b958-bfad97a05724.png)</br>
 Po lewej stronie znajduje się panel służący do wyszukiwania ofert. W środkowej części, u góry widzimy możliwość sortowania oraz wyszukane oferty. Paginacja obejmuje 10 ofert na stronę( u dołu znajduje się odpowiedni przycisk). Oferty mają przekierowania do szybkiego wyszukiwania wycieczek do danego miasta/regionu/kraju. Po prawej stronie mamy panel z aktualnościami.
 ## Widok – podgląd oferty
-![image](https://user-images.githubusercontent.com/80296885/223734523-57c38abf-30c3-4971-bfd3-ca6b108d403a.png)
+![image](https://user-images.githubusercontent.com/80296885/223734523-57c38abf-30c3-4971-bfd3-ca6b108d403a.png)</br>
 Zdjęcia znajdujące się w galerii u dołu automatycznie dobierają swoje wymiary i dzielą się na kafelki tak aby zajmowały długość całego wiersza/kilku wierszy. Po kliknięciu na dany obraz wyświetla nam się modal z wybranym powiększonym zdjęciem. 
 ## Widok – zakup oferty
-![image](https://user-images.githubusercontent.com/80296885/223734726-69f8e557-ad68-41f8-8e84-61527b14dbf3.png)
+![image](https://user-images.githubusercontent.com/80296885/223734726-69f8e557-ad68-41f8-8e84-61527b14dbf3.png)</br>
 W tym widoku przed dokonaniem zakupu możemy wprowadzić zmiany w naszych danych osobowych. Jeżeli dana oferta posiada taką opcję mamy możliwość wybrania pomiędzy wariantem podstawowym a wariantem ubezpieczonym, w zależności od tego dobierana jest odpowiednia kwota. 
 ## Widok – zarządzanie ofertami
-![image](https://user-images.githubusercontent.com/80296885/223734914-92c48973-223d-4444-9f67-b4808589fcbf.png)
+![image](https://user-images.githubusercontent.com/80296885/223734914-92c48973-223d-4444-9f67-b4808589fcbf.png)</br>
 mModerator ma dostęp do wszystkich utworzonych ofert oraz może przejść do tworzenia nowych. Tabela posiada paginację wraz z możliwością ustalenia ilości pozycji na stronie oraz wyszukiwarką a także sortowaniem po poszczególnych kolumnach. Jest również w pełni responsywna, a kolumny które nie pomieszczą się na małym ekranie są chowane pod przyciskiem plus/minus. 
