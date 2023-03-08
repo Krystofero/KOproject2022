@@ -9,7 +9,7 @@ Aplikacja internetowa „Smak Wakacji” ma na celu zaoferowanie potencjalnym kl
 •	Wymaga dostępu do Internetu
 •	Działa 24h na dobę
 •	Działa na wielu przeglądarkach internetowych
-## Podział na role i możliwości użytkowników
+# Podział na role i możliwości użytkowników
 ## Użytkownik niezalogowany może:</br>
 •	Przeglądać oferty – oferty są wczytywane asynchronicznie, tak aby nie generować dużego obciążenia i nie wydłużać czasu ładowania witryny, strona ma wbudowaną paginację</br>
 •	Sortować oferty – sortowanie dostępne po tytule, mieście, regionie, kraju</br>
@@ -96,22 +96,29 @@ Następnie uruchomienie serwera artisan poleceniem:</br>
 php artisan serve</br>
 
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+##  Diagram przypadków użycia:
+ ![image](https://user-images.githubusercontent.com/80296885/223732992-f675fb09-71c3-4ed9-a563-1facf65bfc6f.png)
+##  Diagram stanów (Cykl życia oferty):
+![image](https://user-images.githubusercontent.com/80296885/223733061-d2bbf3e8-52d1-468a-9ec1-3007b11727bf.png)
+##  Diagram sekwencji (rejestracja):
+![image](https://user-images.githubusercontent.com/80296885/223733135-71271df7-b329-4029-9223-1e95d5b5f857.png)
+##  Diagram klas:
+![image](https://user-images.githubusercontent.com/80296885/223733237-77a23e62-2ba2-472f-9485-8b35e2d11deb.png)
+## Diagram związków encji (ERD):
+![image](https://user-images.githubusercontent.com/80296885/223735287-af675eb3-6b18-4fa9-951d-2b031b2578c0.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
+## Wygląd strony głównej:
+![image](https://user-images.githubusercontent.com/80296885/223734004-ea3f300c-81b9-4af1-bb7e-cbc303bf6f93.png)
+Elementami stałymi wszystkich stron są: panel nawigacyjny oraz stopka. Panel nawigacyjny znajduje się u góry ekranu, a jego zawartość zmienia się w zależności od uprawnień danego użytkownika, a także od tego czy jest on zalogowany. Stopka natomiast znajduje się u dołu witryny i zawiera informacje kontaktowe, a także przekierowania do social mediów i polityki prywatności. 
+## Widok – przegląd ofert
+![image](https://user-images.githubusercontent.com/80296885/223734318-a4b457f8-5496-4b52-b958-bfad97a05724.png)
+Po lewej stronie znajduje się panel służący do wyszukiwania ofert. W środkowej części, u góry widzimy możliwość sortowania oraz wyszukane oferty. Paginacja obejmuje 10 ofert na stronę( u dołu znajduje się odpowiedni przycisk). Oferty mają przekierowania do szybkiego wyszukiwania wycieczek do danego miasta/regionu/kraju. Po prawej stronie mamy panel z aktualnościami.
+## Widok – podgląd oferty
+![image](https://user-images.githubusercontent.com/80296885/223734523-57c38abf-30c3-4971-bfd3-ca6b108d403a.png)
+Zdjęcia znajdujące się w galerii u dołu automatycznie dobierają swoje wymiary i dzielą się na kafelki tak aby zajmowały długość całego wiersza/kilku wierszy. Po kliknięciu na dany obraz wyświetla nam się modal z wybranym powiększonym zdjęciem. 
+## Widok – zakup oferty
+![image](https://user-images.githubusercontent.com/80296885/223734726-69f8e557-ad68-41f8-8e84-61527b14dbf3.png)
+W tym widoku przed dokonaniem zakupu możemy wprowadzić zmiany w naszych danych osobowych. Jeżeli dana oferta posiada taką opcję mamy możliwość wybrania pomiędzy wariantem podstawowym a wariantem ubezpieczonym, w zależności od tego dobierana jest odpowiednia kwota. 
+## Widok – zarządzanie ofertami
+![image](https://user-images.githubusercontent.com/80296885/223734914-92c48973-223d-4444-9f67-b4808589fcbf.png)
+mModerator ma dostęp do wszystkich utworzonych ofert oraz może przejść do tworzenia nowych. Tabela posiada paginację wraz z możliwością ustalenia ilości pozycji na stronie oraz wyszukiwarką a także sortowaniem po poszczególnych kolumnach. Jest również w pełni responsywna, a kolumny które nie pomieszczą się na małym ekranie są chowane pod przyciskiem plus/minus. 
